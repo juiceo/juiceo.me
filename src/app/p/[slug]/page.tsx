@@ -9,6 +9,7 @@ import path from "path";
 import { PostHeader } from "@/components/PostHeader";
 import { PostBody } from "@/components/PostBody";
 import { PostWrapper } from "@/components/PostWrapper";
+import { extractHeadings } from "extract-md-headings";
 
 export default async function PostPage({
   params,
@@ -46,9 +47,11 @@ export const getBlogPost = async (slug: string) => {
   if (!fs.existsSync(filePath)) {
     return null;
   }
-  const file = fs.readFileSync(
-    path.join(process.cwd(), "src", "posts", `${slug}.mdx`)
-  );
+
+  const file = fs.readFileSync(filePath);
+  const headings = extractHeadings(filePath);
+
+  console.log("HEADINGS", headings);
   return compileMDX<{
     title: string;
     description: string;
