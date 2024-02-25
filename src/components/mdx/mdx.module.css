@@ -1,4 +1,5 @@
 .h1 {
+    color: #FF8484;
     font-size: 2rem;
 }
 
@@ -20,4 +21,14 @@
   
 .h6 {
     font-size: 1rem;
+}
+
+.p {
+    margin-top: 1.5em;
+}
+
+.ul {
+    padding-left: 32px;
+    padding-top: 16px;
+    list-style:circle
 }

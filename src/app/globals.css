@@ -3,25 +3,37 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --color-page-bg-hsl: 210deg, 38%, 15%;
+  --color-page-bg-dark-hsl: 210deg, 30%, 8%;
+  --color-paper-bg: #1C1D22;
+  --color-text-hsl: 0deg, 10%, 100%;
+  --content-max-w: 800px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+  height: 100%;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: hsl(var(--color-text-hsl));
+  background: hsl(var(--color-page-bg-dark-hsl));
+  font-family: "Poppins", sans-serif;
+  height: 100%;
+  font-weight: 300;
 }
+
+p {
+  line-height: 1.8em;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  margin-top: 1.5em;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+

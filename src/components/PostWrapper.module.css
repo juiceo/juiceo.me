@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: "relative";
+}
+
+.containerTop {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, hsl(var(--color-page-bg-hsl)) 0%, hsl(var(--color-page-bg-dark-hsl)) 100%);
+  z-index: -1;
+}
