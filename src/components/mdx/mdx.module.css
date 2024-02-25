@@ -2,21 +2,36 @@
     color: #FF8484;
     font-size: 2rem;
     line-height: 1.2em;
+    margin-bottom: 1em;
+    margin-top: 3em;
 }
 
 .h2 {
     font-size: 1.6rem;
     line-height: 1.2em;
+    margin-bottom: 1em;
+    margin-top: 3em;
 }
 
 .h3 {
     font-size: 1.2rem;
     line-height: 1.2em;
+    margin-bottom: 1em;
+    margin-top: 3em;
 }
 
 
 .p {
     margin-top: 1.5em;
+}
+
+.p:first-child {
+    margin-top: 0;
+}
+
+.a {
+    color: #FF8484;
+    text-decoration: underline;
 }
 
 .ul {
@@ -25,8 +40,36 @@
     list-style:circle
 }
 
-.image {
+.imageWrapper {
     width: 100%;
     border-radius: 8px;
-    border: 1px solid white;
+    margin-top: 5em;
+    margin-bottom: 5em;
+}
+
+.blockQuote {
+    margin-top: 2em;
+    position: relative;
+    background: hsl(var(--color-page-bg-hsl));
+    border-color: hsl(var(--color-info-hsl));
+    border-left-width: 3px;
+    border-left-style: solid;
+    padding: 16px;
+    padding-left: 32px;
+}
+
+.blockQuoteIcon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 48px;
+    height: 48px;
+    background: red;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate3d(-50%, -50%, 0);
+    background: hsl(var(--color-page-bg-dark-hsl));
+    color: hsl(var(--color-info-hsl));
 }

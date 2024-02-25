@@ -18,10 +18,9 @@ instructions, but rather requires the listener to interpret the speaker's
 meaning.
 
 Unfortunately, machines don't understand abstract ideas or vague intentions -
-they need the user to tell them exactly what to do. This has been the role of
-user interfaces (or, "UIs"): bridging this communication gap by serving as a
-translator of sorts, and allowing humans and machines to communicate with each
-other.
+they need the user to tell them exactly what to do. Bridging this communication
+gap has been the role of user interfaces (or, "UIs"): by serving as a translator
+of sorts, they have allowed humans and machines to communicate with each other.
 
 ![How UIs serve as the translators between humans and machines](/images/ui-flowchart.png)
 
@@ -29,10 +28,10 @@ other.
 
 But wait, what if machines could understand human language? What if a user could
 just "talk" to a machine and explain what they want to do - and the machine
-would be able to understand and act on that?
+would be able to understand and act on that directly?
 
-Maybe you see where I'm going with this: I don't think the above statements are
-necessarily true anymore. Since the release of ChatGPT (and other large language
+Maybe you see where I'm going with this: these "what ifs" are very quickly
+becoming reality. Since the release of ChatGPT (and other large language
 models), I think it has been clear to see that machines can in fact understand
 human language quite well.
 
@@ -43,17 +42,154 @@ same, how good will these models be in 2025? Or 2030?
 
 # My predictions
 
-I have a few predictions for the future (which is already now, by the way):
+I have a few predictions for the future (which is already now, I'd argue):
 
     - User interfaces will become *a lot* simpler
-    - Frontend development will look very different
-    - It will be easier to build complex applications
+    - Frontend developers and designers will have many new problems to solve
 
-The rest of this post will be dedicated to explaining these predictions, and
-what recent technological advances are making them possible (if not inevitable).
+In essence, what I'm saying is this: let's take the above diagram and replace
+all "U" letters with "A", and I think we have something that represents the new
+reality of human-machine communication.
+
+![How AIs serve as the translators between humans and machines](/images/ai-flowchart.png)
 
 ## User interfaces will become a lot simpler
 
-## Frontend development will look very different
+A lot of digital services currently require users to essentially learn a new
+language: the language of the service's UI. Even if a user knows **exactly**
+what they want, they still need to be able to express that intention in the UI.
+They have to learn the jargon and terminology of the service, where to find
+things, which features they need for a given task, and how to use them.
 
-## It will be easier to build complex applications
+For more complex programs - let's say Adobe Photoshop as an example - building
+this sort of familiarity and skill can take years! Being proficient in a complex
+program like this is a marketable skill in its own right.
+
+![Adobe Photoshop UI - what do all of these buttons do???](/images/photoshop-ui.jpeg)
+
+Let's continue with the Photoshop example. I have no idea how to use the
+program, but a common problem I might run into is wanting to remove the
+background from an image.
+
+How would I do that?
+
+- I could look up a tutorial on YouTube
+- I could ask a friend who knows how to use Photoshop
+- I could ask ChatGPT to explain how to do it
+
+Whichever approach I would choose, I would first have to:
+
+- Figure out how to verbalize what I want to do, using the correct terminology
+  (not always easy)
+- Find an external resource to learn how to do it
+- Use this new knowledge to perform the task
+
+That is a lot of time and effort for a simple task! And what's worse, the next
+time I need to do the same thing, I've most likely forgot everything and need to
+repeat all of the above.
+
+### A GenUI solution
+
+> Disclaimer: I haven't used Photoshop in years and don't know how much GenAI
+> they have incorporated into the product. If this is something that already
+> exists in the product, then I guess it just proves my point!
+
+What if I could just tell Photoshop what I want to do, in the language that
+makes sense to me? The entire UI would just be the image I'm working on, plus a
+chat window. In the chat I could type things like:
+
+- "Please remove the background from this image"
+- "Make this image more gloomy"
+- "Can you make the lighting look more professional?"
+
+And Photoshop would just do it. It would understand what I want, and do it. If
+I'm not happy with the result, I could iterate together with the AI.
+
+I wouldn't need to understand what are "layers". I wouldn't need to know what is
+_luminosity_ or _saturation_ or _white balance_. I wouldn't have to undo/redo my
+actions because I'm not very proficient at using the "magic wand tool". I could
+just tell the program what I want, and it would do it.
+
+I think this is a future that is in some ways already here, and will only become
+more prevalent as more and more people get used to the idea of talking to
+machines.
+
+## UI development & design will be different
+
+In a world where AI is ever more prevalent in the services we use, many of the
+classic problems of frontend development and UI design will become somewhat
+obsolete.
+
+Nobody wants to fill out a long form (or develop one, for that matter) if they
+have a nicer way to achieve the same result. Nobody wants to click through a
+series of menus to find the right setting, if they can just ask for it.
+
+Instead of using our energy on building nice forms and making settings easy to
+find, I think more and more of the focus will be on solving all of the new and
+exciting UX challenges related to chat-based UIs.
+
+Here's a few that come to mind:
+
+### Designing around latency
+
+While we've gotten used to everything on the internet happening almost
+instantly, the current generation of GenAI still suffers from a bit of a latency
+issue - LLMs can take **multiple seconds** to respond to a prompt
+(unacceptable!!).
+
+On a serious note, some more complicated tasks can actually take a long time to
+complete (10s of seconds for example), and this is probably a problem that won't
+go away entirely even when the models become faster (they will just start
+solving harder problems). At the same time the rise of TikTok and other
+short-form media are
+[taking a serious toll on the attention span of the average user](https://medium.com/digital-reflections/tiktok-effect-on-attention-span-12211b0a06a1).
+
+How do we keep the user engaged while they're waiting for the AI to do things?
+Animations and loading bars are a start, but perhaps we need to start thinking
+about more fundamental changes to application design - like allowing the user to
+start doing other things while they're waiting for the previous thing to finish.
+
+### Prompt engineering
+
+As AI language models take more and more of the tasks that UIs used to solve,
+the role of frontend developers will also start to include prompt engineering:
+designing the instructions for the AI, so that it behaves in the best possible
+way.
+
+Instead of A/B testing different UI designs to maximize conversions, we'll
+probably start A/B testing different prompts.
+
+### Making AIs transparent
+
+When an AI does something for the user, it's often a complete black box - the
+user has no visibility into how the AI interpreted their prompt, and what steps
+it took to arrive at the result.
+
+I believe it'll be a UI challenge to solve: how do we make the AI's
+decision-making process more transparent to the user, so that they can
+understand why the AI did what it did, and how they can improve their prompts to
+get to the results they want?
+
+### Implementing guard rails
+
+One important role of UIs has been to prevent the user from doing things that
+they probably don't want to do. For example, destructive or irreversible actions
+like deleting an important resource or sending a bulk email often require
+additional confirmation steps.
+
+If these sorts of things can in the future be done with the help of an AI via a
+chat-based UI, how do we implement similar safeguards? How do we in general make
+sure that the AI isn't doing things that the user doesn't want it to do?
+
+# Closing thoughts
+
+After Nvidia - the company leading the charge in AI hardware - announced their
+very positive Q4 2024 earnings report, sending the stock price to record highs,
+CEO Jensen Huang had a simple message:
+
+"Accelerated computing and generative AI have hit the tipping point"
+
+I'm personally fully aboard the hype train, and couldn't agree more. Excited to
+be working on these topics on a daily basis at
+[Twice Commerce](https://twicecommerce.com) and can't wait to see what the
+future holds.

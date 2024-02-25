@@ -1,6 +1,7 @@
 import { PropsWithChildren } from "react";
 import Image from "next/image";
 import styles from "./mdx.module.css";
+import { RiInformationLine } from "react-icons/ri";
 
 export const h1 = (props: PropsWithChildren<{}>) => (
   <h1 className={styles.h1}>{props.children}</h1>
@@ -35,4 +36,19 @@ export const img = (props: PropsWithChildren<any>) => (
     />
     {props.alt && <p className="text-xs mt-1">{props.alt}</p>}
   </div>
+);
+
+export const blockquote = (props: PropsWithChildren<{}>) => {
+  return (
+    <aside className={styles.blockQuote}>
+      {props.children}
+      <div className={styles.blockQuoteIcon}>
+        <RiInformationLine size={36} />
+      </div>
+    </aside>
+  );
+};
+
+export const a = (props: PropsWithChildren<{}>) => (
+  <a className={styles.a} {...props} />
 );
