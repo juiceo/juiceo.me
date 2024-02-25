@@ -32,7 +32,9 @@ export default async function PostPage({
           title={post.frontmatter.title}
           description={post.frontmatter.description}
         />
-        <PostBody>{post.content}</PostBody>
+        <PostBody publishedDate={post.frontmatter.publishedDate}>
+          {post.content}
+        </PostBody>
       </PostWrapper>
     </>
   );
@@ -47,7 +49,11 @@ export const getBlogPost = async (slug: string) => {
   const file = fs.readFileSync(
     path.join(process.cwd(), "src", "posts", `${slug}.mdx`)
   );
-  return compileMDX<{ title: string; description: string }>({
+  return compileMDX<{
+    title: string;
+    description: string;
+    publishedDate: string;
+  }>({
     source: file,
     options: {
       parseFrontmatter: true,

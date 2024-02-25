@@ -14,18 +14,6 @@ export const h3 = (props: PropsWithChildren<{}>) => (
   <h3 className={styles.h3}>{props.children}</h3>
 );
 
-export const h4 = (props: PropsWithChildren<{}>) => (
-  <h4 className={styles.h4}>{props.children}</h4>
-);
-
-export const h5 = (props: PropsWithChildren<{}>) => (
-  <h5 className={styles.h5}>{props.children}</h5>
-);
-
-export const h6 = (props: PropsWithChildren<{}>) => (
-  <h6 className={styles.h6}>{props.children}</h6>
-);
-
 export const ul = (props: PropsWithChildren<{}>) => (
   <ul className={styles.ul}>{props.children}</ul>
 );
@@ -40,7 +28,11 @@ export const p = (props: PropsWithChildren<{}>) => (
 
 export const img = (props: PropsWithChildren<any>) => (
   <div className={styles.imageWrapper}>
-    <Image {...props} alt={props.alt} width={300} height={300} />
-    {props.alt ?? <p>{props.alt}</p>}
+    <img
+      {...props}
+      alt={props.alt}
+      className="w-full rounded-lg border-gray-700 border-2"
+    />
+    {props.alt && <p className="text-xs mt-1">{props.alt}</p>}
   </div>
 );
