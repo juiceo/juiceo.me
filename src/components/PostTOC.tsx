@@ -68,8 +68,15 @@ export const PostTOC = (props: PostTOCProps) => {
 const PostTOCItem = (props: { heading: Heading; isActive?: boolean }) => {
   const { heading } = props;
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    document
+      .getElementById(heading.slug)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
-    <a href={`#${heading.slug}`} key={heading.id}>
+    <a href={`#${heading.slug}`} key={heading.id} onClick={handleClick}>
       <p
         className={classNames(styles.heading, {
           [styles.headingLevel1]: heading.level === 1,
