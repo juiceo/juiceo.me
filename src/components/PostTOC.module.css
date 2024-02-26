@@ -1,0 +1,26 @@
+.container {
+  position: sticky;
+  top: 16px;
+  align-self: start;
+}
+
+.label {
+  text-transform: uppercase;
+  font-weight: 300;
+  color: gray;
+}
+
+.headingLevel1 {
+  font-size: 1rem;
+}
+
+.headingLevel2 {
+  font-size: 0.8rem;
+  margin-left: 1rem;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    display: none;
+  }
+}

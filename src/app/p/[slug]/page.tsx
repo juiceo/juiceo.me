@@ -10,6 +10,8 @@ import { PostHeader } from "@/components/PostHeader";
 import { PostBody } from "@/components/PostBody";
 import { PostWrapper } from "@/components/PostWrapper";
 import { extractHeadings } from "extract-md-headings";
+import { PostTOC } from "@/components/PostTOC";
+import { PostLayout } from "@/components/PostLayout";
 
 export default async function PostPage({
   params,
@@ -17,11 +19,13 @@ export default async function PostPage({
   params: { slug: string };
 }) {
   console.log("SLUG", params);
-  const post = await getBlogPost(params.slug);
+  const data = await getBlogPost(params.slug);
 
-  if (!post) {
+  if (!data) {
     return <h1>Not found!</h1>;
   }
+
+  const { post, headings } = data;
 
   return (
     <>
@@ -33,9 +37,12 @@ export default async function PostPage({
           title={post.frontmatter.title}
           description={post.frontmatter.description}
         />
-        <PostBody publishedDate={post.frontmatter.publishedDate}>
-          {post.content}
-        </PostBody>
+        <PostLayout>
+          <PostBody publishedDate={post.frontmatter.publishedDate}>
+            {post.content}
+          </PostBody>
+          <PostTOC headings={headings} />
+        </PostLayout>
       </PostWrapper>
     </>
   );
@@ -51,8 +58,7 @@ export const getBlogPost = async (slug: string) => {
   const file = fs.readFileSync(filePath);
   const headings = extractHeadings(filePath);
 
-  console.log("HEADINGS", headings);
-  return compileMDX<{
+  const post = await compileMDX<{
     title: string;
     description: string;
     publishedDate: string;
@@ -63,4 +69,9 @@ export const getBlogPost = async (slug: string) => {
     },
     components: MDXComponents,
   });
+
+  return {
+    post,
+    headings,
+  };
 };
