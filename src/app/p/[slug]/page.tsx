@@ -13,6 +13,7 @@ import { extractHeadings } from "extract-md-headings";
 import { PostTOC } from "@/components/PostTOC";
 import { PostLayout } from "@/components/PostLayout";
 import slugify from "slug";
+import { NavBar } from "@/components/NavBar";
 
 export default async function PostPage({
   params,
@@ -33,6 +34,7 @@ export default async function PostPage({
       <Head>
         <title>{post.frontmatter.title as string}</title>
       </Head>
+      <NavBar />
       <PostWrapper>
         <PostHeader
           title={post.frontmatter.title}

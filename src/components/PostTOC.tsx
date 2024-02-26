@@ -47,8 +47,6 @@ export const PostTOC = (props: PostTOCProps) => {
     };
   }, [getActiveHeading]);
 
-  console.log("ACTIVE HEADING", activeHeadingId);
-
   return (
     <div className={styles.container}>
       <h6 className={styles.label}>Table of contents</h6>
