@@ -51,14 +51,16 @@ export const PostTOC = (props: PostTOCProps) => {
 
   return (
     <div className={styles.container}>
-      <p className={styles.label}>Table of contents</p>
-      {filteredHeadings.map((heading) => (
-        <PostTOCItem
-          heading={heading}
-          isActive={activeHeadingId === heading.id}
-          key={heading.id}
-        />
-      ))}
+      <h6 className={styles.label}>Table of contents</h6>
+      <div className={styles.tocList}>
+        {filteredHeadings.map((heading) => (
+          <PostTOCItem
+            heading={heading}
+            isActive={activeHeadingId === heading.id}
+            key={heading.id}
+          />
+        ))}
+      </div>
     </div>
   );
 };
