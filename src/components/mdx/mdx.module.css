@@ -36,6 +36,12 @@
 .hashLink {
     color: #FF8484;
     position: relative;
+    margin-top: 2em;
+}
+
+.hashLinkPos {
+    position: relative;
+    top: -70px;    
 }
 
 .hashLinkIcon {

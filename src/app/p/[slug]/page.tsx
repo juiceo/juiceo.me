@@ -12,6 +12,7 @@ import { PostWrapper } from "@/components/PostWrapper";
 import { extractHeadings } from "extract-md-headings";
 import { PostTOC } from "@/components/PostTOC";
 import { PostLayout } from "@/components/PostLayout";
+import slugify from "slug";
 
 export default async function PostPage({
   params,
@@ -56,7 +57,10 @@ export const getBlogPost = async (slug: string) => {
   }
 
   const file = fs.readFileSync(filePath);
-  const headings = extractHeadings(filePath);
+  const headings = extractHeadings(filePath).map((heading) => ({
+    ...heading,
+    slug: slugify(heading.title),
+  }));
 
   const post = await compileMDX<{
     title: string;

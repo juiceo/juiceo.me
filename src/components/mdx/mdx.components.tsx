@@ -11,16 +11,24 @@ export const h1 = (props: PropsWithChildren<{}>) => {
       <div className={styles.hashLinkIcon}>
         <RiLink size={24} />
       </div>
-      <h1 id={titleSlug} className={styles.h1}>
-        {props.children}
-      </h1>
+      <div className={styles.hashLinkPos} id={titleSlug} />
+      <h1 className={styles.h1}>{props.children}</h1>
     </Link>
   );
 };
 
-export const h2 = (props: PropsWithChildren<{}>) => (
-  <h2 className={styles.h2}>{props.children}</h2>
-);
+export const h2 = (props: PropsWithChildren<{}>) => {
+  const titleSlug = slug(props.children?.toString() ?? "");
+  return (
+    <Link className={styles.hashLink} href={`#${titleSlug}`}>
+      <div className={styles.hashLinkIcon}>
+        <RiLink size={24} />
+      </div>
+      <div className={styles.hashLinkPos} id={titleSlug} />
+      <h1 className={styles.h2}>{props.children}</h1>
+    </Link>
+  );
+};
 
 export const h3 = (props: PropsWithChildren<{}>) => (
   <h3 className={styles.h3}>{props.children}</h3>
