@@ -3,7 +3,9 @@ import { throttle } from "lodash";
 import { useEffect, useState } from "react";
 import classNames from "classnames";
 import styles from "./NavBar.module.css";
+import { sourceCodePro } from "@/app/fonts";
 import { RiGithubFill, RiLinkedinFill } from "react-icons/ri";
+
 import Link from "next/link";
 
 export const NavBar = () => {
@@ -44,12 +46,13 @@ export const NavBar = () => {
 
 const NavBarInner = () => {
   return (
-    <nav className={styles.navbar}>
+    <nav className={classNames(styles.navbar, sourceCodePro.className)}>
       <div className={styles.navbarLeft}>
-        <Link href="/">
-          <h1>Juiceo</h1>
+        <Link href="/" className={styles.navLink}>
+          <h1>juiceo.me</h1>
         </Link>
       </div>
+      <div className={styles.divider} />
       <div className={styles.navbarMid}>
         <Link href="/posts" className={styles.navLink}>
           All posts

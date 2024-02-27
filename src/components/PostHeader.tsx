@@ -4,6 +4,7 @@ import { TypeAnimation } from "react-type-animation";
 
 import { useState } from "react";
 import classNames from "classnames";
+import { sourceCodePro } from "@/app/fonts";
 
 export interface PostHeaderProps {
   title: string;
@@ -13,7 +14,7 @@ export interface PostHeaderProps {
 export const PostHeader = (props: PostHeaderProps) => {
   const [isTyped, setIsTyped] = useState<boolean>(false);
   return (
-    <div className={styles.container}>
+    <div className={classNames(styles.container, sourceCodePro.className)}>
       {isTyped ? (
         <h1 className={styles.title}>
           {props.title}

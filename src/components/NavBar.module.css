@@ -7,6 +7,7 @@
     z-index: 100;
     padding-left: 32px;
     padding-right: 32px;
+    padding-top: 16px;
 }
 
 .navbarWrapperScrolled {
@@ -37,6 +38,12 @@
     max-width: var(--content-max-w);
     margin: 0 auto;
     color: hsl(var(--color-text-secondary-hsl));
+}
+
+.divider {
+    height: 50%;
+    width: 2px;
+    background: hsl(var(--color-text-secondary-hsl));
 }
 
 .navLink {
