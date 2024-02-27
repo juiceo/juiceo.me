@@ -6,7 +6,6 @@ export interface PostWrapperProps {}
 export const PostWrapper = (props: PropsWithChildren<PostWrapperProps>) => {
   return (
     <div className={styles.container}>
-      <div className={styles.containerTop} />
       <div>{props.children}</div>
     </div>
   );

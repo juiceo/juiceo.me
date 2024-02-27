@@ -5,6 +5,8 @@
     left: 0; 
     right: 0;
     z-index: 100;
+    padding-left: 32px;
+    padding-right: 32px;
 }
 
 .navbarWrapperScrolled {
@@ -16,6 +18,8 @@
     background: hsl(var(--color-page-bg-dark-hsl));
     transform: translateY(-100px);
     transition: transform 0.2s ease;
+    padding-left: 32px;
+    padding-right: 32px;
 }
 
 .navbarWrapperScrolledVisible {
@@ -24,11 +28,38 @@
 
 .navbar {
     display: flex;
-    width: 100%;
     flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
-    padding: 0 16px;
+    width: 100%;
     gap: 16px;
     height: 40px;
+    max-width: var(--content-max-w);
+    margin: 0 auto;
+    color: hsl(var(--color-text-secondary-hsl));
+}
+
+.navLink {
+    color: hsl(var(--color-text-secondary-hsl));
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.navLink:hover {
+    color: hsl(var(--color-text-primary-hsl));
+}
+
+.navbarMid {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+.navbarRight {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
 }

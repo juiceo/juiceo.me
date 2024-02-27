@@ -7,13 +7,14 @@
 .label {
   text-transform: uppercase;
   font-weight: 300;
-  color: gray;
   margin-bottom: 1em;
+  color: hsl(var(--color-text-secondary-hsl));
 }
 
 .heading {
   transition: color 0.2s ease;
   line-height: 1.25em;
+  color: hsl(var(--color-text-body-hsl));
 }
 
 .headingLevel1 {

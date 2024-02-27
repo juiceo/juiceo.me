@@ -1,4 +1,9 @@
+"use client";
 import styles from "./PostHeader.module.css";
+import { TypeAnimation } from "react-type-animation";
+
+import { useState } from "react";
+import classNames from "classnames";
 
 export interface PostHeaderProps {
   title: string;
@@ -6,10 +11,39 @@ export interface PostHeaderProps {
 }
 
 export const PostHeader = (props: PostHeaderProps) => {
+  const [isTyped, setIsTyped] = useState<boolean>(false);
   return (
     <div className={styles.container}>
-      <h1 className="text-3xl text-center">{props.title}</h1>
-      <p className="text-xl text-gray-400 text-center">{props.description}</p>
+      {isTyped ? (
+        <h1 className={styles.title}>
+          {props.title}
+          <span
+            style={{
+              width: "10px",
+              display: "inline-block",
+            }}
+          />
+        </h1>
+      ) : (
+        <TypeAnimation
+          sequence={[
+            props.title,
+            () => {
+              setIsTyped(true);
+            },
+          ]}
+          wrapper="h1"
+          cursor
+          className={styles.title}
+        />
+      )}
+      <p
+        className={classNames(styles.subtitle, {
+          [styles.subtitleVisible]: isTyped,
+        })}
+      >
+        {props.description}
+      </p>
     </div>
   );
 };

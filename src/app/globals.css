@@ -5,14 +5,26 @@
 :root {
   --color-page-bg-hsl: 210deg, 38%, 15%;
   --color-page-bg-dark-hsl: 210deg, 30%, 8%;
-  --color-paper-bg: #1C1D22;
-  --color-text-hsl: 0deg, 10%, 100%;
   --color-info-hsl: 230deg, 100%, 69%;
-  --content-max-w: 800px;
+  --color-footer-hsl: 300, 21%, 5%;
+  --color-accent-hsl: 0, 100%, 76%;
+
+  --color-text-primary-hsl: 0deg, 10%, 100%;
+  --color-text-secondary-hsl: 218deg, 10.6%, 64.9%;
+  --color-text-body-hsl: 213deg, 26.8%, 83.9%;
+
+  --content-max-w: 1024px;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html {
   height: 100%;
+  background: hsl(var(--color-page-bg-hsl));
+  background-attachment: fixed;
+  position: relative;
 }
 
 body {

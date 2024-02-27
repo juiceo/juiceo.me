@@ -1,6 +1,6 @@
 
 .container {
-    height: 500px;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,3 +11,24 @@
     gap: 16px;
 }
 
+.title {
+    color: hsl(var(--color-text-primary-hsl));
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    text-align: center;
+}
+
+.subtitle {
+    color: hsl(var(--color-text-secondary-hsl));
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity 0.5s ease 0.5s, transform 1s ease;
+}
+
+.subtitleVisible {
+    opacity: 1;
+    transform: translateY(0);
+}

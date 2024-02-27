@@ -34,7 +34,7 @@ export default async function PostPage({
       <Head>
         <title>{post.frontmatter.title as string}</title>
       </Head>
-      <NavBar />
+
       <PostWrapper>
         <PostHeader
           title={post.frontmatter.title}

@@ -4,8 +4,15 @@
   background: hsl(var(--color-page-bg-dark-hsl));
   padding: 32px;
   border-radius: 8px;
+  position: relative;
 }
 
 .publishedDate {
-  margin-bottom: 2rem;
+  color: hsl(var(--color-text-secondary-hsl));
+}
+
+.content {
+  color: hsl(var(--color-text-body-hsl));
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }

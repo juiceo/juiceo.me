@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { PageLayout } from "@/components/PageLayout";
+import { OverscrollFillerBottom } from "@/components/OverscrollFillerBottom";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["500", "300"] });
 
@@ -16,7 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        <PageLayout>{children}</PageLayout>
+        <OverscrollFillerBottom />
+      </body>
     </html>
   );
 }

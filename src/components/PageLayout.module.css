@@ -1,0 +1,13 @@
+.layout {
+  position: relative;
+  min-height: 200vh;
+  background: hsl(var(--color-page-bg-dark-hsl));
+  z-index: 2;
+}
+
+
+.layoutContent {
+  position: relative;
+  z-index: 5;
+  padding-bottom: 300px;
+}
