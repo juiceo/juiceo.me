@@ -8,13 +8,14 @@
   text-transform: uppercase;
   font-weight: 300;
   margin-bottom: 1em;
-  color: hsl(var(--color-text-secondary-hsl));
+  color: hsl(var(--color-text-primary-hsl));
+  letter-spacing: 2px;
 }
 
 .heading {
   transition: color 0.2s ease;
   line-height: 1.25em;
-  color: hsl(var(--color-text-body-hsl));
+  color: hsl(var(--color-text-secondary-hsl));
 }
 
 .headingLevel1 {
