@@ -1,7 +1,8 @@
 "use client";
-import { memo, useEffect, useRef, useState } from "react";
+import { memo } from "react";
 import styles from "./Gradients.module.css";
 
+//https://github.com/baunov/gradients-bg
 const Gradients = () => {
   return (
     <div className={styles.background}>
