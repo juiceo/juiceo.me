@@ -35,18 +35,16 @@ export default async function PostPage({
         <title>{post.frontmatter.title as string}</title>
       </Head>
 
-      <PostWrapper>
-        <PostHeader
-          title={post.frontmatter.title}
-          description={post.frontmatter.description}
-        />
-        <PostLayout>
-          <PostBody publishedDate={post.frontmatter.publishedDate}>
-            {post.content}
-          </PostBody>
-          <PostTOC headings={headings} />
-        </PostLayout>
-      </PostWrapper>
+      <PostHeader
+        title={post.frontmatter.title}
+        description={post.frontmatter.description}
+      />
+      <PostLayout>
+        <PostBody publishedDate={post.frontmatter.publishedDate}>
+          {post.content}
+        </PostBody>
+        <PostTOC headings={headings} />
+      </PostLayout>
     </>
   );
 }
