@@ -1,5 +1,3 @@
-// pages/[slug].tsx
-
 import React from "react";
 import Head from "next/head";
 import fs from "fs";
@@ -8,7 +6,6 @@ import * as MDXComponents from "@/components/mdx/mdx.components";
 import path from "path";
 import { PostHeader } from "@/components/PostHeader";
 import { PostBody } from "@/components/PostBody";
-import { PostWrapper } from "@/components/PostWrapper";
 import { extractHeadings } from "extract-md-headings";
 import { PostTOC } from "@/components/PostTOC";
 import { PostLayout } from "@/components/PostLayout";
