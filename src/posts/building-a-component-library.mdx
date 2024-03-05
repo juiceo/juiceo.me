@@ -1,0 +1,139 @@
+---
+title: Learnings from building a component library
+description: AKA how to build a component library that doesn't suck
+previewImage: https://source.unsplash.com/A-NVHPka9Rk/1920x1280
+publishedDate: 2024-02-25T13:00:00.000Z
+---
+
+# Why we built a component library
+
+At [Twice](https://twicecommerce.com) we'd been talking about setting up a
+component library pretty much as long as I've been there. It always seemed like
+it would be a better way to organise ourselves around building UI components,
+but as is often the case in startup land, it never quite made it to the top of
+the priority list.
+
+Finally last fall we came across a project where it felt like the best way to
+approach it would be to build a component library: we were working on our Wix
+integration and needed to split our existing online store into individually
+embeddable building blocks that users could use to add our rental functionality
+to their existing Wix website.
+
+As the tool of choice we landed on Storybook, and started building our component
+library from scratch. After the Wix project, we onboarded the rest of the team
+to the "component library workflow" and have been building most of our UI
+components there since.
+
+Overall it's been a definite change for the better, but of course it hasn't been
+a journey without it's pitfalls. Here's a few of my recommendations for what to
+do, and what to avoid if you want to tackle a similar project.
+
+# What we learned along the way
+
+## It's easier to start alone
+
+I worked mostly alone on the component library side during the Wix project,
+while the rest of the team was working on different aspects of the project, or
+different things entirely. In hindsight, this was critical to building a solid
+foundation: I could quickly iterate on the structure as I noticed what worked
+well and what didn't, instead of having to sync up with the rest of the team.
+
+It's really important to have an opinionated structure in your component
+library: you need to decide on a file structure, naming conventions, shared
+props interfaces and other repeatable patterns that make it easier to build and
+maintain for everyone. A component library without a clear set of rules will
+inevitably turn into an incomprehensible mess as it grows and as the rest of the
+team adopts it.
+
+You will NOT get this right the first time - but instead if you're anything like
+me you'll have almost daily a-ha moments where you realise that something you've
+been doing doesn't really scale too well, and you want to refactor everything
+you've built. The bigger the library grows and the more people you have working
+on it, the harder it will be to make these sorts of fundamental changes.
+
+If I would've had to run every decision by the rest of the team, argument my
+reasoning for why I want to restructure or refactor something, or worry about
+breaking someone else's work when I change things, I think progress would have
+been much slower and perhaps some of the valuable iteration cycles would have
+been skipped. Of course it's good to remember that you're building something
+that will be used by the entire team, so it's good to periodically ask for
+feedback - but ultimately someone needs to make opinionated decisions as well.
+
+So, learning number one: start with a small team (or alone), get the foundations
+right, and then slowly onboard the rest of the team.
+
+## Avoid hasty abstractions
+
+I feel like one of the biggest pitfalls in programming is to start abstracting
+things too early. I remember reading about the DRY principle ("Don't Repeat
+Yourself") in my _first ever_ university programming course, and for a long time
+I took it as some kind of sacred rule that should be followed at all costs.
+Whenever some piece of logic, however small, was repeated - it should be moved
+into a "reusable abstraction".
+
+But WAIT! **This is a trap**. What they don't tell you is that abstractions are
+always a tradeoff: they make things more reusable, but they also introduce
+dependencies, complexity and cognitive overhead. These days I am a follower of
+the church of [AHA programming](https://kentcdodds.com/blog/aha-programming)
+("Avoid Hasty Abstractions"), which states that the best time to abstract
+something is when the need is LITERALLY SCREAMING IN YOUR FACE.
+
+Making the wrong abstraction too early starts a vicious cycle: the abstraction
+isn't perfect, but it's used in a few places, so it's a bit of an effort to
+change. You need to add a new feature or handle some edge case, and you don't
+want to break any existing code, so you monkey patch it with some additional
+logic. This goes on for a while, and before you know it you have a steaming pile
+of spaghetti code that's used all over your application, that is too much work
+or too big of a risk to start refactoring. Slowly your entire codebase becomes a
+graveyard of half-baked abstractions and the most appealing way to move forward
+is to start from scratch.
+
+This is especially a real danger in a component library context, where _sort of
+the whole point_ is to come up with useful abstractions for common problems.
+
+What I would recommend is the following:
+
+- Start by building components without any abstractions at all
+- As you start noticing repeating patterns, RESIST the urge to build
+  abstractions immediately
+- When a common pattern is so obvious that it's literally hurting you to repeat
+  it, build an abstraction for it
+
+But remember - the goal is to make it easier for everyone to follow the shared
+conventions, rules and patterns in the component library. The correct
+abstractions can help with this. The wrong abstractions will make it harder.
+
+One useful abstraction we've built is a wrapper HOC (higher order component) for
+all components in the library. The current naming of it isn't ideal, but if I
+would name it again it would be called `component` - and the usage is like so:
+
+```tsx
+
+import { component } from '@twice/ui'
+
+
+const MyComponent = component((props: MyComponentProps) => {
+    return ( ... )
+})
+```
+
+The `component` HOC does a few things:
+
+- It adds some shared props to all components: `$sx` for adding inline styles to
+  the wrapper element, `$theme` for customizing the theme of the component and
+  `$localization` for overriding the localization of the component
+- It makes sure that all of the necessary context providers are rendered above
+  the component, if they are not existing higher up in the tree.
+
+What makes this a useful abstraction in my opinion:
+
+- It's dead simple to use: you just wrap your component in it.
+- It establishes a shared pattern for a common problem - making sure all
+  components are styleable and themeable without having to figure out the props
+  interface & logic separately for each component
+
+## Start small (and stay small)
+
+## Benchmark from the best
+
+## Documentation first
