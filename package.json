@@ -11,7 +11,7 @@
   "dependencies": {
     "classnames": "^2.5.1",
     "date-fns": "^3.3.1",
-    "extract-md-headings": "^0.2.5",
+    "extract-md-headings": "^0.2.7",
     "framer-motion": "^10.18.0",
     "front-matter": "^4.0.2",
     "jotai": "^2.6.1",

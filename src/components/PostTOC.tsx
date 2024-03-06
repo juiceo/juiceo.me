@@ -2,14 +2,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import styles from "./PostTOC.module.css";
 import classNames from "classnames";
-import { takeWhile, throttle } from "lodash";
-
-type Heading = {
-  id: string;
-  slug: string;
-  title: string;
-  level: number;
-};
+import { throttle } from "lodash";
+import { Heading } from "extract-md-headings";
 
 export interface PostTOCProps {
   headings: Heading[];
@@ -32,7 +26,7 @@ export const PostTOC = (props: PostTOCProps) => {
       return !!pos && pos < 100;
     });
 
-    return activeHeadings.pop()?.id ?? null;
+    return activeHeadings.pop()?.id?.toString() ?? null;
   }, [filteredHeadings]);
 
   useEffect(() => {
@@ -54,7 +48,7 @@ export const PostTOC = (props: PostTOCProps) => {
         {filteredHeadings.map((heading) => (
           <PostTOCItem
             heading={heading}
-            isActive={activeHeadingId === heading.id}
+            isActive={activeHeadingId === heading.id.toString()}
             key={heading.id}
           />
         ))}
