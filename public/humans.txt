@@ -1,0 +1,10 @@
+# humanstxt.org
+
+# TEAM
+
+Designer & Developer: Juuso Lappalainen <hello@juiceo.me>
+Site: https://juiceo.me
+GitHub: https://github.com/juiceo
+Location: Helsinki, Finland
+
+---

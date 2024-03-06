@@ -1,0 +1,6 @@
+# www.robotstxt.org
+
+Sitemap: https://juiceo.me/sitemap.xml
+
+User-Agent: *
+Disallow:
