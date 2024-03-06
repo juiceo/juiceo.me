@@ -4,6 +4,7 @@ import { poppins } from "@/app/fonts";
 import { PageLayout } from "@/components/PageLayout";
 import { OverscrollFillerBottom } from "@/components/OverscrollFillerBottom";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "juiceo.me",
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <SpeedInsights />
+        <Analytics />
         <PageLayout>{children}</PageLayout>
         <OverscrollFillerBottom />
       </body>
