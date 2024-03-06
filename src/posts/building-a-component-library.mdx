@@ -21,17 +21,18 @@ rental functionality to their existing Wix website. As the goal for the project
 was to build a series of isolated components, instead of an app, building them
 in something like Storybook seemed like the obvious choice.
 
-Fast forward 6 or so months, and the whole team has transitioned to a workflow
-of building UI components mostly in Storybook, in all of our projects. Overall
-it's been a definite change for the better, but there have definitely been a
-fair share of pitfalls along the way too.
+Fast forward 6 or so months, and we long ago completed that project - but the
+whole team has transitioned to a workflow of building UI components mostly in
+Storybook, in all of our projects. Overall it's been a definite change for the
+better, but there have definitely been a fair share of pitfalls along the way
+too.
 
 So, below is my take on what we've learned along the way, what went well and
 what we'd do differently if we were to do it all again!
 
 # What we learned along the way
 
-## It's easier to start alone
+## TODO: It's easier to start alone
 
 I worked mostly alone on the component library side during the Wix project,
 while the rest of the team was working on different aspects of the project, or
@@ -74,20 +75,21 @@ I took it as some kind of sacred rule that should be followed at all costs.
 Whenever some piece of logic, however small, was repeated - it should be moved
 into a "reusable abstraction".
 
-**But this is a trap**. What they don't tell you is that abstractions are always
-a tradeoff: they make things more reusable, but they also introduce
-dependencies, complexity and cognitive overhead. These days I am a follower of
+**But this is a trap**. What they don't tell you is that there's always a
+tradeoff: abstractions often let you write less code, but they also introduce
+dependencies, complexity and cognitive overhead. These days I'm a follower of
 the church of [AHA programming](https://kentcdodds.com/blog/aha-programming)
 ("Avoid Hasty Abstractions"), which states that the best time to abstract
 something is when the need is LITERALLY SCREAMING IN YOUR FACE.
 
 Making the wrong abstraction too early starts a vicious cycle: the abstraction
-isn't perfect, but it's used in a few places, so it's a bit of an effort to
-change. You need to add a new feature or handle some edge case, and you don't
+isn't perfect, but it's already used in a few places, so it's a bit of an effort
+to change. You need to add a new feature or handle some edge case, and you don't
 want to break any existing code, so you monkey patch it with some additional
 logic. This goes on for a while, and before you know it you have a steaming pile
 of spaghetti code that's used all over your application, that is too much work
-or too big of a risk to start refactoring. Slowly your entire codebase becomes a
+or too big of a risk to start refactoring - so you make a new abstraction that
+works for your new use case. Slowly but surely your entire codebase becomes a
 graveyard of half-baked abstractions and the most appealing way to move forward
 is to start from scratch.
 
@@ -102,7 +104,7 @@ What I would recommend is the following:
 - When a common pattern is so obvious that it's literally hurting you to repeat
   it, build an abstraction for it
 
-But remember - the goal is to make it easier for everyone to follow the shared
+Remember - the goal is to make it easy for everyone to follow the shared
 conventions, rules and patterns in the component library. The correct
 abstractions can help with this. The wrong abstractions will make it harder.
 
@@ -155,13 +157,13 @@ abstractions into your component library.
 ## Documentation as a priority
 
 In some strange way, I've always enjoyed writing documentation comments in
-code - it's somehow very satisfying to write really neat JSDoc comments for
-example, even if the code itself would be quite self explanatory. But it's
+code - it's just _somehow very satisfying_ to write really neat JSDoc comments
+for example, even if the code itself would be quite self explanatory. But it's
 always been a sort of extra thing and not something that I've ever considered
 any kind of requirement.
 
 In the context of a component library however, good documentation is absolutely
-vital. There's I think two reasons for that, and I'll start with the less
+vital. I think there are two reasons for that, and I'll start with the less
 important one.
 
 ### Docs pages!
@@ -184,25 +186,25 @@ it is to understand what a component does.
 This is nice and all, but it's not the real reason why documentation is so
 important. The REAL reason is that _it's really hard to write documentation for
 something that violates the principle of keeping to "logically small" components
-from above._
+from above._ How so?
 
 **A component doesn't have a clear, generic purpose?** It's hard to write a good
-explanation of what it is and what it does (or in many cases even give it a
-name).
+explanation of what it is and what it does (or in many cases even decide what it
+should be named).
 
 **A component takes in a million different props and has tons of ways to make it
 do different things?** Good luck describing all of those.
 
-**A component requires knowledge of some application-specific context to
-understand?** Hopefully while writing the comment that explains this, you'll
-remember that you weren't supposed to do that!
+**A component requires knowing about the existence of some specific application
+in order to understand?** Hopefully while writing the comment that explains
+this, you'll remember that you weren't supposed to do that!
 
 Any time you find yourself struggling to write documentation comments that make
-sense (or especially if you find GitHub Copilot struggling), it's a good sign
-that what you're building doesn't make that much sense. If I have a skim through
-our component library, there is a very large overlap in the Venn diagram of a)
-components that I don't think are abstracted very well and b) components that
-are missing documentation.
+sense (or especially if you find GitHub Copilot struggling with it), it's a
+strong sign that _what you're building_ doesn't make that much sense. With a
+quick skim through our component library, I can see that there's a very large
+overlap in the Venn diagram of a) components that I don't think are abstracted
+very well and b) components that are missing documentation.
 
 My advice: always write thorough documentation for your components. This will
 help you avoid building the wrong ones.
@@ -222,7 +224,7 @@ components that are just very light wrappers around the UI library components.
 ## Benchmark with pride
 
 Speaking of UI libraries, it's a good idea to benchmark your favorite open
-source UI library in a lot of things. Some examples of things we've looked at:
+source UI library in a lot of things. Some examples of things to take a look at:
 
 - How do they arrange their docs?
 - What kinds of demos do they have for their components?
@@ -232,7 +234,7 @@ source UI library in a lot of things. Some examples of things we've looked at:
 Authors of popular component libraries have no doubt spent tons of time & effort
 debating and deciding on these sorts of details, so it's probably a pretty good
 idea to just copy some patterns from them - or at least have a look at what they
-are doing.
+are doing, and try to consider why they are doing it that way.
 
 We've certainly benchmarked and/or directly copied a lot of things from MUI,
 especially with regards to how components are structured, how different kinds of
