@@ -4,7 +4,7 @@ import { PostHeader } from "@/components/PostHeader";
 import { PostBody } from "@/components/PostBody";
 import { PostTOC } from "@/components/PostTOC";
 import { PostLayout } from "@/components/PostLayout";
-import { getAllPostSlugs, getCompiledBlogPost } from "@/utils/posts";
+import { getAllBlogPostPreviews, getCompiledBlogPost } from "@/utils/posts";
 import { NextPage } from "next";
 
 export type PostPageProps = {
@@ -38,9 +38,9 @@ const PostPage: NextPage<PostPageProps> = async ({ params }) => {
 
 export const dynamicParams = false;
 export const generateStaticParams = async () => {
-  const slugs = await getAllPostSlugs();
+  const posts = await getAllBlogPostPreviews();
 
-  return slugs.map((slug) => ({ slug }));
+  return posts.map((post) => ({ slug: post.slug }));
 };
 
 const getBlogPost = async (slug: string) => {

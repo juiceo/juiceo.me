@@ -1,17 +1,15 @@
 import React from "react";
 import Head from "next/head";
-import fs from "fs";
-import path from "path";
 import { PostHeader } from "@/components/PostHeader";
-import fm from "front-matter";
 import Link from "next/link";
+import { getAllBlogPostPreviews } from "@/utils/posts";
 
 export default async function PostPage({
   params,
 }: {
   params: { slug: string };
 }) {
-  const { posts } = await getAllPosts();
+  const posts = await getAllBlogPostPreviews();
 
   return (
     <>
@@ -28,27 +26,3 @@ export default async function PostPage({
     </>
   );
 }
-
-export const getAllPosts = async () => {
-  const postsDirPath = path.join(process.cwd(), "src", "posts");
-
-  const fileNames = fs.readdirSync(postsDirPath);
-
-  const posts = fileNames.map((fileName) => {
-    const file = fs.readFileSync(path.join(postsDirPath, fileName), "utf8");
-    const frontMatter = fm<{
-      title: string;
-      description: string;
-      publishedDate: string;
-    }>(file);
-
-    return {
-      slug: fileName.replace(".mdx", ""),
-      ...frontMatter.attributes,
-    };
-  });
-
-  return {
-    posts,
-  };
-};

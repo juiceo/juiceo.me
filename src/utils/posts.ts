@@ -4,12 +4,17 @@ import { extractHeadings, Heading } from "extract-md-headings";
 import slugify from "slug";
 import { CompileMDXResult, compileMDX } from "next-mdx-remote/rsc";
 import * as MDXComponents from "@/components/mdx/mdx.components";
+import fm from "front-matter";
 
 export type BlogPostFrontMatter = {
   title: string;
   description: string;
   publishedDate: string;
 };
+
+export type BlogPostPreview = {
+  slug: string;
+} & BlogPostFrontMatter;
 
 export type BlogPost = CompileMDXResult<BlogPostFrontMatter>;
 
@@ -36,17 +41,38 @@ export const getCompiledBlogPost = async (
     components: MDXComponents,
   });
 
+  if (!post.frontmatter.publishedDate) {
+    throw new Error(`Post with slug ${slug} not found`);
+  }
+
   return {
     post,
     headings,
   };
 };
 
-export const getAllPostSlugs = async () => {
-  const dirPath = path.join(process.cwd(), "src", "posts");
-  const fileNames = fs.readdirSync(dirPath);
+export const getAllBlogPostPreviews = async (): Promise<BlogPostPreview[]> => {
+  const postsDirPath = path.join(process.cwd(), "src", "posts");
 
-  return fileNames.map((fileName) => {
-    return fileName.replace(".mdx", "");
+  const fileNames = fs.readdirSync(postsDirPath);
+
+  const previews = fileNames.map((fileName) => {
+    const file = fs.readFileSync(path.join(postsDirPath, fileName), "utf8");
+    const frontMatter = fm<{
+      title: string;
+      description: string;
+      publishedDate: string;
+    }>(file);
+
+    return {
+      slug: getSlugFromFilename(fileName),
+      ...frontMatter.attributes,
+    };
   });
+
+  return previews.filter((p) => !!p.publishedDate);
+};
+
+export const getSlugFromFilename = (fileName: string) => {
+  return fileName.replace(".mdx", "");
 };
