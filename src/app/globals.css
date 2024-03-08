@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 :root {
+  --color-page-bg: #1B2021;
+
+
   --color-page-bg-hsl: 210deg, 38%, 15%;
   --color-page-bg-dark-hsl: 210deg, 30%, 8%;
   --color-info-hsl: 230deg, 100%, 69%;
@@ -22,14 +25,14 @@
 
 html {
   height: 100%;
-  background: hsl(var(--color-page-bg-hsl));
+  background: var(--color-page-bg);
   background-attachment: fixed;
   position: relative;
 }
 
 body {
   color: hsl(var(--color-text-hsl));
-  background: hsl(var(--color-page-bg-dark-hsl));
+  background: var(--color-page-bg);
   font-family: "Poppins", sans-serif;
   height: 100%;
   font-weight: 300;

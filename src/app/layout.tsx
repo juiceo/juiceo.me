@@ -21,8 +21,7 @@ export default function RootLayout({
       <body className={poppins.className}>
         <SpeedInsights />
         <Analytics />
-        <PageLayout>{children}</PageLayout>
-        <OverscrollFillerBottom />
+        {children}
       </body>
     </html>
   );

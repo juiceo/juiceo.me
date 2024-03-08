@@ -1,0 +1,22 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.wavePattern {
+  background:
+    radial-gradient(circle at 100% 50%, transparent 20%, #00D4F0 21%,
+      #00D4F0 34%, transparent 35%, transparent),
+    radial-gradient(circle at 0% 50%, transparent 20%, #00D4F0 21%, #00D4F0 34%, transparent 35%, transparent) 0 -50px;
+  background-color: #EEEEEE;
+  background-size: 75px 100px;
+}
+
+
+.fadePattern {
+  background: linear-gradient(to top, hsl(var(--color-page-bg-dark-hsl)), hsla(var(--color-page-bg-dark-hsl), 0.9));
+}

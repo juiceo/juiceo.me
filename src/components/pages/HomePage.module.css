@@ -1,0 +1,118 @@
+.wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.foreground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.title {
+  font-size: 3rem;
+  color: hsl(var(--color-accent-hsl));  
+  user-select: none;
+  padding: 32px;
+  text-shadow: 0 0 8px #2F2D2E;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: scale(4);
+}
+
+.backgroundGrid {
+  display: grid;
+  grid-template-columns: repeat(20, minmax(30px, 3vw));
+  grid-template-rows: repeat(20, minmax(30px, 3vw));
+  grid-gap: 1px;
+  transform: skewX(-48deg) skewY(14deg) scaleX(2) rotate(7.51416748046875deg) scale(0.426953125);
+
+}
+
+.backgroundGridItem {
+  background: #2F2D2E;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.backgroundGridItem:hover {
+  background: hsl(var(--color-accent-hsl));
+}
+
+
+.tooltipItem {
+  transition: all 0.5s ease;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .tooltipItem {
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(10px)
+  }
+}
+
+.tooltipWrapper {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+  transform: translateY(-105%) translateX(-50%);
+  pointer-events: none;
+}
+
+
+.tooltipBar {
+  width: 2px;
+  background: var(--color-page-bg);
+  height: 150px;
+}
+
+.tooltipLabel {
+  font-size: 1.2rem;
+  color: hsl(var(--color-accent-hsl));
+  user-select: none;
+  padding: 8px;
+  text-shadow: 0 0 8px #2F2D2E;
+}
+
+.mobileNavLink {
+  color: hsl(var(--color-accent-hsl));
+  font-size: 1.6rem;
+  text-shadow: 0 0 8px #2F2D2E;
+}
