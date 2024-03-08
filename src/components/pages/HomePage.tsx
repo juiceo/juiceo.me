@@ -33,13 +33,26 @@ const MobileNav = () => {
     defaultValue: false,
   });
   return (
-    <motion.div animate={{ height: visible ? "auto" : 0 }}>
+    <motion.div
+      animate={{ height: visible ? "auto" : 0 }}
+      transition={{
+        delay: visible ? 0 : 0.5,
+      }}
+    >
       <AnimatePresence>
         {visible && (
           <>
-            <MobileNavItem position={1} label="Blog" />
-            <MobileNavItem position={2} label="GitHub" />
-            <MobileNavItem position={3} label="LinkedIn" />
+            <MobileNavItem position={1} label="Blog" href="/posts" />
+            <MobileNavItem
+              position={2}
+              label="GitHub"
+              href="https://github.com/juiceo"
+            />
+            <MobileNavItem
+              position={3}
+              label="LinkedIn"
+              href="https://linkedin.com/li/juusolappalainen1"
+            />
           </>
         )}
       </AnimatePresence>
@@ -47,10 +60,17 @@ const MobileNav = () => {
   );
 };
 
-const MobileNavItem = (props: { position: number; label: string }) => {
-  const { position, label } = props;
+const MobileNavItem = (props: {
+  position: number;
+  label: string;
+  href: string;
+}) => {
+  const { position, label, href } = props;
   return (
-    <motion.div
+    <motion.a
+      href={href}
+      target={href.startsWith("/") ? "_self" : "_blank"}
+      rel="noreferrer noopener"
       initial={{
         x: -50,
         opacity: 0,
@@ -64,12 +84,11 @@ const MobileNavItem = (props: { position: number; label: string }) => {
       }}
       exit={{
         opacity: 0,
-        y: -100,
         filter: "blur(10px)",
       }}
     >
       <p className={styles.mobileNavLink}>{label}</p>
-    </motion.div>
+    </motion.a>
   );
 };
 
@@ -89,15 +108,21 @@ const BackgroundGrid = () => {
   );
 };
 
-const TooltipItem = (props: PropsWithChildren<{ label: string }>) => {
+const TooltipItem = (
+  props: PropsWithChildren<{ label: string; href: string }>
+) => {
   const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(
     null
   );
   return (
-    <div
+    <a
       className={styles.tooltipItem}
       onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
       onMouseOut={() => setMousePos(null)}
+      aria-label={props.label}
+      href={props.href}
+      target={props.href.startsWith("/") ? "_self" : "_blank"}
+      rel="noreferrer noopener"
     >
       {props.children}
       {mousePos &&
@@ -110,13 +135,13 @@ const TooltipItem = (props: PropsWithChildren<{ label: string }>) => {
           />,
           document.body
         )}
-    </div>
+    </a>
   );
 };
 
 const GitHubItem = () => {
   return (
-    <TooltipItem label="GitHub">
+    <TooltipItem label="GitHub" href="https://github.com/juiceo">
       <RiGithubFill size={20} />
     </TooltipItem>
   );
@@ -124,7 +149,10 @@ const GitHubItem = () => {
 
 const LinkedInItem = () => {
   return (
-    <TooltipItem label="LinkedIn">
+    <TooltipItem
+      label="LinkedIn"
+      href="https://linkedin.com/in/juusolappalainen1"
+    >
       <RiLinkedinFill size={20} />
     </TooltipItem>
   );
@@ -132,7 +160,7 @@ const LinkedInItem = () => {
 
 const PostsItem = () => {
   return (
-    <TooltipItem label="Blog">
+    <TooltipItem label="Blog" href="/posts">
       <RiRssFill size={20} />
     </TooltipItem>
   );
@@ -159,10 +187,3 @@ const Tooltip = (props: { label: string; x: number; y: number }) => {
     </div>
   );
 };
-
-/* <div
-key={i}
-className={classNames(styles.backgroundGridItem, {
-  [styles.backgroundGridItemSpecial]: i === 470,
-})}
-/> */
