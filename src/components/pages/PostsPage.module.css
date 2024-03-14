@@ -1,0 +1,48 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-left: 32px;
+  padding-right: 32px;
+  max-width: 664px;
+  margin: 0 auto;
+}
+
+.title {
+  color: hsl(var(--color-accent-hsl));  
+}
+
+.subtitle {
+  color: hsl(var(--color-accent-hsl));
+}
+
+.posts {
+  max-width: 964px;
+  padding-left: 32px;
+  padding-right: 32px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.postTitle {
+  margin-bottom: 1rem;
+}
+
+.postDescription, .postDate {
+  color: hsl(var(--color-text-secondary-hsl)); 
+  font-size: 1.2rem;
+}

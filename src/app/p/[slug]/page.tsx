@@ -5,7 +5,6 @@ import { PostTOC } from "@/components/PostTOC";
 import { PostLayout } from "@/components/PostLayout";
 import { getAllBlogPostPreviews, getCompiledBlogPost } from "@/utils/posts";
 import { NextPage } from "next";
-import { Footer } from "@/components/Footer";
 import { AnimatedGradients } from "@/components/Gradients";
 import type { Metadata, ResolvingMetadata } from "next";
 
@@ -39,7 +38,6 @@ const PostPage: NextPage<PostPageProps> = async ({ params }) => {
           <PostTOC headings={headings} />
         </PostLayout>
       </div>
-      <Footer />
     </div>
   );
 };

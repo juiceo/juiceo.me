@@ -21,19 +21,7 @@
   pointer-events: none;
 }
 
-@media screen and (max-width: 768px) {
-  .foreground {
-    pointer-events: initial;
-  }
-
-  .background {
-    pointer-events: none;
-  }
-}
-
-
 .title {
-  font-size: 3rem;
   color: hsl(var(--color-accent-hsl));  
   user-select: none;
   padding: 32px;
@@ -53,7 +41,21 @@
   align-items: center;
   justify-content: center;
   transform: scale(4);
+  transition: transform 0.3s ease;
 }
+
+@media screen and (max-width: 768px) {
+  .foreground {
+    pointer-events: initial;
+  }
+
+  .background {
+    pointer-events: none;
+  }
+}
+
+
+
 
 .backgroundGrid {
   display: grid;

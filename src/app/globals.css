@@ -31,7 +31,7 @@ html {
 }
 
 body {
-  color: hsl(var(--color-text-hsl));
+  color: hsl(var(--color-text-primary-hsl));
   background: var(--color-page-bg);
   font-family: "Poppins", sans-serif;
   height: 100%;
@@ -39,7 +39,16 @@ body {
 }
 
 p {
-  line-height: 1.8em;
+  font-size: 1.4rem;
+  line-height: 1.4em;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2, h3 {
+  font-size: 2.2rem;
 }
 
 h1,h2,h3,h4,h5,h6 {
