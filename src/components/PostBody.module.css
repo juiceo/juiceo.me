@@ -1,7 +1,7 @@
 .container {
-  transform: translateY(-100px);
+  transform: translateY(-150px);
   width: 100%;
-  background: hsl(var(--color-page-bg-dark-hsl));
+  background: var(--color-page-bg);
   padding: 32px;
   border-radius: 8px;
   position: relative;
@@ -9,10 +9,16 @@
 
 .publishedDate {
   color: hsl(var(--color-text-secondary-hsl));
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 .content {
   color: hsl(var(--color-text-body-hsl));
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.content > *:first-child > * {
+  margin-top: 0;
 }

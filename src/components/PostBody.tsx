@@ -18,8 +18,7 @@ export const PostBody = (props: PropsWithChildren<PostBodyProps>) => {
             day: "numeric",
           },
           { locale: "en-US" }
-        )}{" "}
-        ({intlFormatDistance(props.publishedDate, new Date())})
+        )}
       </p>
       <div className={styles.content}>{props.children}</div>
     </main>

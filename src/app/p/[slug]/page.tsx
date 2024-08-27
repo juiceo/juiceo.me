@@ -19,7 +19,6 @@ const PostPage: NextPage<PostPageProps> = async ({ params }) => {
 
   return (
     <div>
-      <AnimatedGradients />
       <div
         style={{
           position: "relative",
