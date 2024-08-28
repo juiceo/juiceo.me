@@ -26,6 +26,9 @@ export const PostHeader = (props: PostHeaderProps) => {
           />
         </h1>
       ) : (
+
+
+        
         <TypeAnimation
           sequence={[
             props.title,
