@@ -26,7 +26,8 @@
 }
 
 .subtitle {
-  color: hsl(var(--color-accent-hsl));
+  color: hsl(var(--color-text-secondary-hsl));
+
 }
 
 .posts {

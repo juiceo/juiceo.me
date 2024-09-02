@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 
-import { sourceCodePro } from '@/app/fonts';
 import classNames from 'classnames';
 import { TypeAnimation } from 'react-type-animation';
+
+import { sourceCodePro } from '@/app/fonts';
 
 import styles from './PostHeader.module.css';
 
