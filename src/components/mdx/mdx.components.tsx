@@ -36,6 +36,8 @@ export const h3 = (props: PropsWithChildren<{}>) => <h3 className={styles.h3}>{p
 
 export const ul = (props: PropsWithChildren<{}>) => <ul className={styles.ul}>{props.children}</ul>;
 
+export const li = (props: PropsWithChildren<{}>) => <li className={styles.li}>{props.children}</li>;
+
 export const br = (props: PropsWithChildren<{}>) => <br className={styles.br}>{props.children}</br>;
 
 export const p = (props: PropsWithChildren<{}>) => <p className={styles.p}>{props.children}</p>;

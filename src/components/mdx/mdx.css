@@ -11,10 +11,8 @@ code {
 }
 
 code:not(pre:has(code)) {
-    color: hsl(var(--color-accent-hsl));
-
-    background: #22272e;
-    padding-left: 2px;
-    padding-right: 2px;
+    color: white;
+    background: hsl(var(--color-page-bg-hsl));
+    padding: 4px;
     border-radius: 4px;
 }

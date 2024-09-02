@@ -76,14 +76,12 @@ import Title from './Typography';
 That's not great! This kind of wrongly named import easily leads to confusion. With named imports,
 you avoid this problem entirely.
 
-### How on earth do I enforce something like this??
-
-It would be practically impossible to maintain this kind of strict order of imports manually. As
-with many things, the answer is to automate the issue with tooling. For this case, I can recommend a
-Prettier plugin called
-[`prettier-plugin-sort-imports`](https://github.com/IanVS/prettier-plugin-sort-imports) - you can
-define your preferred import ordering and every time you save a file the imports will be ordered
-just like you want them.
+> It would be practically impossible to maintain this kind of strict order of imports manually. As
+> with many things, the answer is to automate the issue with tooling. For this case, I can recommend
+> a Prettier plugin called
+> [`prettier-plugin-sort-imports`](https://github.com/IanVS/prettier-plugin-sort-imports) - you can
+> define your preferred import ordering and every time you save a file the imports will be ordered
+> just like you want them.
 
 And I'll mention one more added bonus of sorting imports - you'll have a LOT less merge conflicts
 related to your imports, as they only change when something actually changes.
@@ -338,7 +336,7 @@ export const DatePicker = (props: DatePickerProps) => {
 }
 ```
 
-### Use sub-components when needed
+## Use sub-components when needed
 
 Another thing that often contributes to overly bloated components is not using sub-components where
 appropriate, but instead trying to include everything into a single component. A prime example of
@@ -419,10 +417,10 @@ faster for you to do something in a quick and dirty way, even if you know that y
 bit more time to clean it up. Or maybe it's ok if we just release this as-is, and
 [clean it up later](https://xkcd.com/1983/)?
 
-But as said, it's a trap: quick and dirty solutions are only faster if you've never spent the effort
-to build the muscle memory to do things in a better way. But if you have that muscle memory, and
-you've spent time and effort thinking about these things, you'll notice that it's actually faster
-for you to do things nicely simply because it's the first approach that comes to your mind.
+But, quick and dirty solutions are only faster if you've never spent the effort to build the muscle
+memory to do things in a better way, by default. If you've spent time and effort thinking about
+these things, you'll notice that it's actually faster for you to do things nicely simply because
+it's the first approach that naturally comes to your mind.
 
 Code quality is also very contagious. Much like when you visit a messy house, a messy codebase is
 almost like an invitation to keep making the mess worse - it's clear that the owner doesn't really

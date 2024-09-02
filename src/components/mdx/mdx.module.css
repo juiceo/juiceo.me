@@ -17,13 +17,20 @@
     line-height: 1.2em;
     margin-bottom: 1em;
     margin-top: 3em;
+    color: hsla(var(--color-text-body-hsl), 1);
+}
+
+.h1:first-child,
+.h2:first-child,
+.h3:first-child {
+    margin-top: 0;
 }
 
 
 .p {
     margin-top: 1.5em;
     font-size: 16px;
-    line-height: 1.5em;
+    line-height: 1.75em;
     color: hsla(var(--color-text-body-hsl), 0.85);
 }
 
@@ -45,6 +52,7 @@
     color: hsl(var(--color-accent-hsl));
     position: relative;
     margin-top: 2em;
+    display: block;
 }
 
 
@@ -74,6 +82,10 @@
     padding-left: 32px;
     padding-top: 16px;
     list-style:circle
+}
+
+.li {
+    margin-bottom: 8px;
 }
 
 .image {
@@ -109,6 +121,6 @@
     align-items: center;
     justify-content: center;
     transform: translate3d(-50%, -50%, 0);
-    background: hsl(var(--color-page-bg-dark-hsl));
+    background: var(--color-page-bg);
     color: hsl(var(--color-info-hsl));
 }
