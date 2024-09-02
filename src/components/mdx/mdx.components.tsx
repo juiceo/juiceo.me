@@ -40,7 +40,7 @@ export const br = (props: PropsWithChildren<{}>) => <br className={styles.br}>{p
 
 export const p = (props: PropsWithChildren<{}>) => <p className={styles.p}>{props.children}</p>;
 
-export const strong = (props: PropsWithChilren<{}>) => (
+export const strong = (props: PropsWithChildren<{}>) => (
 	<strong className={styles.strong}>{props.children}</strong>
 );
 
