@@ -9,8 +9,8 @@
     padding-left: 32px;
     padding-right: 32px;
     gap: 16px;
-    background: hsl(var(--color-info-hsl));
-    position: relative;
+    background-color: hsl(var(--color-page-bg-hsl));
+
 }
 
 .title {
