@@ -4,9 +4,7 @@
 	"semi": true,
 	"useTabs": true,
 	"trailingComma": "all",
-	"plugins": [
-		"@ianvs/prettier-plugin-sort-imports"
-	],
+	"plugins": ["@ianvs/prettier-plugin-sort-imports"],
 	"proseWrap": "always",
 	"importOrder": [
 		"^react$",
@@ -14,10 +12,9 @@
 		"",
 		"<THIRD_PARTY_MODULES>",
 		"",
+		"^[@/]",
+		"",
 		"^[./]"
 	],
-	"importOrderParserPlugins": [
-		"typescript",
-		"jsx"
-	]
+	"importOrderParserPlugins": ["typescript", "jsx"]
 }

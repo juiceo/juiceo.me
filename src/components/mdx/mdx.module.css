@@ -22,9 +22,15 @@
 
 .p {
     margin-top: 1.5em;
-    font-size: 1rem;
+    font-size: 16px;
     line-height: 1.5em;
+    color: hsla(var(--color-text-body-hsl), 0.85);
 }
+
+.strong {
+    color: hsl(var(--color-accent-hsl));
+}
+
 
 .p:first-child {
     margin-top: 0;

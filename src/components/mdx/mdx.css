@@ -1,0 +1,20 @@
+pre:has(code) {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    width: 100%;
+    overflow: auto;
+    display: inline-block;
+}
+
+code {
+    overflow: auto;
+}
+
+code:not(pre:has(code)) {
+    color: hsl(var(--color-accent-hsl));
+
+    background: #22272e;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-radius: 4px;
+}

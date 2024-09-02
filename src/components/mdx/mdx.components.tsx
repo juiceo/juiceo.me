@@ -1,82 +1,73 @@
-import { PropsWithChildren } from "react";
-import styles from "./mdx.module.css";
-import { RiInformationLine, RiLink } from "react-icons/ri";
-import slug from "slug";
-import Link from "next/link";
+import { PropsWithChildren } from 'react';
+
+import Link from 'next/link';
+import { RiInformationLine, RiLink } from 'react-icons/ri';
+import slug from 'slug';
+
+import styles from './mdx.module.css';
 
 export const h1 = (props: PropsWithChildren<{}>) => {
-  const titleSlug = slug(props.children?.toString() ?? "");
-  return (
-    <Link className={styles.hashLink} href={`#${titleSlug}`}>
-      <div className={styles.hashLinkIcon}>
-        <RiLink size={24} />
-      </div>
-      <div className={styles.hashLinkPos} id={titleSlug} />
-      <h1 className={styles.h1}>{props.children}</h1>
-    </Link>
-  );
+	const titleSlug = slug(props.children?.toString() ?? '');
+	return (
+		<Link className={styles.hashLink} href={`#${titleSlug}`}>
+			<div className={styles.hashLinkIcon}>
+				<RiLink size={24} />
+			</div>
+			<div className={styles.hashLinkPos} id={titleSlug} />
+			<h1 className={styles.h1}>{props.children}</h1>
+		</Link>
+	);
 };
 
 export const h2 = (props: PropsWithChildren<{}>) => {
-  const titleSlug = slug(props.children?.toString() ?? "");
-  return (
-    <Link className={styles.hashLink} href={`#${titleSlug}`}>
-      <div className={styles.hashLinkIcon}>
-        <RiLink size={24} />
-      </div>
-      <div className={styles.hashLinkPos} id={titleSlug} />
-      <h1 className={styles.h2}>{props.children}</h1>
-    </Link>
-  );
+	const titleSlug = slug(props.children?.toString() ?? '');
+	return (
+		<Link className={styles.hashLink} href={`#${titleSlug}`}>
+			<div className={styles.hashLinkIcon}>
+				<RiLink size={24} />
+			</div>
+			<div className={styles.hashLinkPos} id={titleSlug} />
+			<h1 className={styles.h2}>{props.children}</h1>
+		</Link>
+	);
 };
 
-export const h3 = (props: PropsWithChildren<{}>) => (
-  <h3 className={styles.h3}>{props.children}</h3>
-);
+export const h3 = (props: PropsWithChildren<{}>) => <h3 className={styles.h3}>{props.children}</h3>;
 
-export const ul = (props: PropsWithChildren<{}>) => (
-  <ul className={styles.ul}>{props.children}</ul>
-);
+export const ul = (props: PropsWithChildren<{}>) => <ul className={styles.ul}>{props.children}</ul>;
 
-export const br = (props: PropsWithChildren<{}>) => (
-  <br className={styles.br}>{props.children}</br>
-);
+export const br = (props: PropsWithChildren<{}>) => <br className={styles.br}>{props.children}</br>;
 
-export const p = (props: PropsWithChildren<{}>) => (
-  <p className={styles.p}>{props.children}</p>
+export const p = (props: PropsWithChildren<{}>) => <p className={styles.p}>{props.children}</p>;
+
+export const strong = (props: PropsWithChilren<{}>) => (
+	<strong className={styles.strong}>{props.children}</strong>
 );
 
 export const img = (props: PropsWithChildren<any>) => (
-  <>
-    <img
-      {...props}
-      alt={props.alt}
-      className={`${styles.image} w-full rounded-lg border-gray-700 border-2`}
-    />
-    <span
-      className={`${styles.imageCaption} text-xs text-center mt-1 w-full block`}
-    >
-      {props.alt}
-    </span>
-  </>
+	<>
+		<img
+			{...props}
+			alt={props.alt}
+			className={`${styles.image} w-full rounded-lg border-gray-700 border-2`}
+		/>
+		<span className={`${styles.imageCaption} text-xs text-center mt-1 w-full block`}>
+			{props.alt}
+		</span>
+	</>
 );
 
 export const blockquote = (props: PropsWithChildren<{}>) => {
-  return (
-    <aside className={styles.blockQuote}>
-      {props.children}
-      <div className={styles.blockQuoteIcon}>
-        <RiInformationLine size={36} />
-      </div>
-    </aside>
-  );
+	return (
+		<aside className={styles.blockQuote}>
+			{props.children}
+			<div className={styles.blockQuoteIcon}>
+				<RiInformationLine size={36} />
+			</div>
+		</aside>
+	);
 };
 
 export const a = (props: PropsWithChildren<{}>) => (
-  <a
-    className={styles.a}
-    target="_blank"
-    rel="noopener noreferrer"
-    {...props}
-  />
+	<a className={styles.a} target="_blank" rel="noopener noreferrer" {...props} />
 );
