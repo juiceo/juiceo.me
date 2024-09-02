@@ -8,6 +8,7 @@ import type { Metadata, ResolvingMetadata } from 'next';
 
 import { NavBar } from '@/components/NavBar';
 import { PostBody } from '@/components/PostBody';
+import { PostFooter } from '@/components/PostFooter';
 import { PostHeader } from '@/components/PostHeader';
 import { PostLayout } from '@/components/PostLayout';
 import { PostTOC } from '@/components/PostTOC';
@@ -29,11 +30,15 @@ const PostPage: NextPage<PostPageProps> = async ({ params }) => {
 				style={{
 					position: 'relative',
 					zIndex: 5,
+					paddingBottom: '200px',
 				}}
 			>
 				<PostHeader title={post.frontmatter.title} description={post.frontmatter.description} />
 				<PostLayout>
-					<PostBody publishedDate={post.frontmatter.publishedDate}>{post.content}</PostBody>
+					<div style={{ minWidth: 0 }}>
+						<PostBody publishedDate={post.frontmatter.publishedDate}>{post.content}</PostBody>
+						<PostFooter />
+					</div>
 					<PostTOC headings={headings} />
 				</PostLayout>
 			</div>
