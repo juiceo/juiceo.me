@@ -3,13 +3,15 @@ import React from 'react';
 import 'highlight.js/styles/github-dark-dimmed.css';
 import '@/components/mdx/mdx.css';
 
+import { NextPage } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
+
+import { NavBar } from '@/components/NavBar';
 import { PostBody } from '@/components/PostBody';
 import { PostHeader } from '@/components/PostHeader';
 import { PostLayout } from '@/components/PostLayout';
 import { PostTOC } from '@/components/PostTOC';
 import { getAllBlogPostPreviews, getCompiledBlogPost } from '@/utils/posts';
-import { NextPage } from 'next';
-import type { Metadata, ResolvingMetadata } from 'next';
 
 export type PostPageProps = {
 	params: {
@@ -22,11 +24,11 @@ const PostPage: NextPage<PostPageProps> = async ({ params }) => {
 
 	return (
 		<div>
+			<NavBar />
 			<div
 				style={{
 					position: 'relative',
 					zIndex: 5,
-					paddingBottom: '300px',
 				}}
 			>
 				<PostHeader title={post.frontmatter.title} description={post.frontmatter.description} />

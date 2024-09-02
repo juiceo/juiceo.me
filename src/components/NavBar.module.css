@@ -56,6 +56,10 @@
     color: hsl(var(--color-text-primary-hsl));
 }
 
+.navLink h1 {
+    font-size: 1rem;
+}
+
 .navbarMid {
     flex: 1;
     display: flex;
