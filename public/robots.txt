@@ -3,4 +3,4 @@
 Sitemap: https://juiceo.me/sitemap.xml
 
 User-Agent: *
-Disallow:
+Disallow: /assets/
