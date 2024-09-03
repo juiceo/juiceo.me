@@ -1,0 +1,206 @@
+---
+title: On React props
+previewImage: https://source.unsplash.com/A-NVHPka9Rk/1920x1280
+publishedDate: 2024-01-20T13:00:00.000Z
+---
+
+Ah, props. Props are like the external APIs of your React components - they describe what needs to
+be passed in, and what comes out. It's like an instructions manual for your component, a how-to
+guide of sorts.
+
+I still remember the way the concept of APIs was described in the first university CS course I
+attended. It was barely a few weeks after I'd written my first lines of code, and there was a
+section on APIs - Application Programming Interfaces - in the course materials.
+
+The analogy that was used was the case of a hot dog stand:
+
+- The API of the hot dog stand is the cashier window. The menu describes what you can get out of the
+  hot dog stand (the outputs), and how much it costs (the inputs). As a customer, this is (mostly)
+  what you care about.
+- The implementation of the hot dog stand is the grill, the refrigerator, the staff heating up the
+  buns, and so on. As long as the hot dog you get out is good, you don't _really care_ how any of
+  this is organised.
+
+Imagine if the hot dog stand didn't have an API at all. To figure out how to get a hot dog out of
+it, you would need to go back behind the counter and check what kinds of buns are in the cupboards.
+You'd need to open the refridgerator to see what sausages are available. You'd have to ask the cook
+to combine the specific ingredients you want, as if they didn't even know what a hot dog is. This
+kind of hot dog stand would feel absurdly unuseful!
+
+Even with how ridiculous that example feels, it's not exactly uncommon to have to do this when you
+are working in a React codebase. It's often the case that components have lazily designed or
+undocumented APIs (props interfaces), and you end up having to open up the component and personally
+figure out how everything works, just to be able to use it.
+
+In my humble opinion, APIs are the most important concept in programming. And by extension, props
+interfaces are the most important thing when it comes to writing React. So, in this article, I want
+to go through what I think are the key ideas to keep in mind when writing React, so you can also
+build great APIs for your components.
+
+# Keep the menu small
+
+The easiest way to recognise a good restaurant is that they have a focused menu - they've chosen a
+niche that they're really good at, and have made a conscious choice to limit the amount of different
+meals available. Why? Because they want to be able to make those few dishes really well.
+
+On the other hand, we've all been to the chinese restaurant on the corner, or the neighborhood kebab
+place, only to be faced with a menu boasting sometimes 100s of different options! As a first-time
+_user_ of that restaurant, you would have a hard time filtering through all of the noise to figure
+out what it is that the restaurant actually does well.
+
+When it comes to React, the same concept applies. Often a good React component is much like a good
+restaurant - it solves a specific niche, and it solves it really well. Even still, over time even
+good React components face pressure to start expanding their niche - to start solving problems that
+they weren't initially designed for.
+
+In a situation like that, it's wise to pause for a moment and think: should this restaurant really
+expand its menu, or would it perhaps be wiser to open up an entirely new restaurant to serve the new
+requirements?
+
+# Explain the fancy lingo
+
+Sometimes when you read the menu of a really fancy restaurant, it's full of all kinds of fancy
+culinary lingo describing the contents. To avoid making a complete fool out of yourself, you pretend
+like you know exactly what _Chiffonade_ and _Escabeche_ are, and confidently order your meal - only
+to later be surprised that it's actually not at all what you wanted to eat.
+
+I see this sometimes in programming as well. Developers have a tendency to feel like they have no
+choice but to use the fanciest possible words to name things. And in many cases, they don't realise
+to add any helpful documentation that would describe what that thing actually is and what it does.
+
+For example, like this:
+
+```tsx
+export const getFeed = (args: { smoothingConstant?: number }) => {
+	//...
+};
+```
+
+This kind of code creates more questions than it answers: What is a "smoothing constant"? What kinds
+of values are expected? How does this affect the output?
+
+Instead, a well-documented API for this function could look, for example, like this:
+
+```tsx
+export const getFeed = (args: {
+	/**
+	 * The smoothing constant is a number between 0 and 1, which influences the randomness of the results.
+	 *
+	 * A high smoothing constant reduces the impact of the ranking criteria, making the results more random.
+	 * A low smoothing constant increases the impact of the ranking criteria, making the results less random.
+	 *
+	 * @see {@link https://en.wikipedia.org/wiki/Exponential_smoothing} for more details
+	 *
+	 * @default 0.5
+	 */
+	smoothingConstant?: number;
+}) => {
+	//...
+};
+```
+
+It's ok to use fancy lingo - sometimes that's the most accurate way to describe a thing. But it's
+important to always assume the users of your code know nothing, and make a habit of explaining
+things thoroughly. Writing this kind of documentation takes at most a minute, but could save an hour
+of someone else's time. And: if you use something like GitHub Copilot, writing this kind of
+documentation is often a matter of just creating an empty comment and pressing tab to accept the
+suggestion.
+
+# Keep it conventional
+
+It's a good idea to write your component APIs in a way that is immediately familiar to someone who
+opens it for the first time.
+
+I'll admit I'm starting to struggle with these restaurant analogies a bit, but let's give it a shot.
+Imagine opening a restaurant menu that just ignored all existing conventions for how menus usually
+work. As a customer, you would have a really hard time figuring out what to order!
+
+How this relates to React though, is that following conventions is a really powerful tool to make
+your component APIs quick and easy to understand. Some practical examples of this could be:
+
+### Using `value` and `onChange` for the input/output props of a controlled component
+
+Sometimes I come across code where there has been an attempt to come up with more "contextual"
+naming for these props - like for example a date picker component might use `date` and
+`onDateChange`, a text field might use `text` and `onTextChange`. In my opinion, this is not at all
+necessary: if you are using TypeScript (and you definitely should be), the types already describe
+what the type of the value is: `value: Date` conveys just as much information as `date: Date`. In
+many cases, the type of the value is more complex and leads to quite obtuse naming like:
+
+```tsx
+export interface DatePickerProps {
+	dateAndTime: string;
+	onDateAndTimeChange: (dateAndTime: string) => void;
+}
+```
+
+When you combine this kind of naming with all of the different props that a component might take in,
+it sometimes becomes a bit difficult to even figure out what is the prop that controls the main
+value of the component. In this kind of case, a much more readable props interface would be
+something like this:
+
+```tsx
+export interface DatePickerProps {
+	value: DateTime;
+	onChange: (value: DateTime) => void;
+}
+```
+
+### Be consistent with naming
+
+This is a small thing, but it's good to make a conscious decision how you want to name certain kinds
+of props, so that they convey their purpose in the best possible way.
+
+For example, a prop used to disable an input could be named either `disabled` or `isDisabled`. Both
+of these certainly work, and there are examples of both being used by major React libraries.
+
+In some cases though, a less verbose convention like `disabled` may run into issues. Imagine a
+component that takes in a prop named `footer`, which is a boolean flag indicating whether to render
+a footer or not. Based on the naming alone, it could easily be confused with a prop where I should
+in fact pass in the React component to use as the footer. Now, if the convention in the codebase was
+that boolean props always use a more verbose naming convention like `isDisabled` or `hasFooter`, it
+would be much easier to understand what the purpose of the `footer` prop is.
+
+There's no one right answer to this, except: pick a convention, and try to be consistent with it
+across your codebase.
+
+# Be specific
+
+Ok, so we've all seen this in a menu at least once:
+
+**"Served with potatoes"**
+
+What do you mean "potatoes"? Is it french fries? Baked potatoes? Pan-friend potatoes? _Mashed
+potatoes_?? Surely there's some more specific description of the potatoes you could have given me...
+
+In Typescript, this kind of confusion happens when you're too wide with your typing. Going back to
+our date picker example, we could imagine it having a prop to control how the selected value is
+formatted:
+
+```tsx
+export interface DatePickerProps {
+	value: DateTime;
+	onChange: (value: DateTime) => void;
+	format: string;
+}
+```
+
+Just looking at the props interface here, it's not very clear what a valid value for the `format`
+prop looks like. We could improve this by adding some JSDoc and maybe a link to some external
+documentation which includes a list of all valid formats, but the problem still remains - Typescript
+will allow the developer to pass in all kinds of invalid values because the prop is typed as just
+`string`.
+
+In most cases, you will probably have a pretty small set of _intended_ values for a prop like this,
+so it would be a lot more useful if it would instead be typed something like:
+
+```tsx
+format: 'mm/dd/yyyy' | 'mm/yyyy' | 'mm/dd';
+```
+
+When designing the types interface of a component, your goal should be to allow the Typescript
+compiler to help the user avoid passing in the wrong kinds of values, as much as possible.
+
+If you're new to Typescript, this might at first seem like you're making it harder to use your
+component. But in fact, it's the opposite: by making it harder to use the component in the wrong
+way, you're making it easier to use it _in the right way_.
