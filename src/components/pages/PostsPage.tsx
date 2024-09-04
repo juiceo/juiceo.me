@@ -68,10 +68,13 @@ const PostItemWrapper = styled(Link)`
 	padding: 16px;
 	margin-bottom: 16px;
 	border-radius: 4px;
-	transition: background 0.2s ease;
 
-	&:hover {
-		background: rgba(255, 255, 255, 0.1);
+	& h2 {
+		transition: color 0.2s ease;
+	}
+
+	&:hover h2 {
+		color: ${(props) => props.theme.colors.text.accent};
 	}
 `;
 
