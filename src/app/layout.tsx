@@ -3,6 +3,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 
 import { poppins } from '@/app/fonts';
+import { StyledComponentsRegistry } from '@/lib/registry';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -23,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			<body className={poppins.className}>
 				<SpeedInsights />
 				<Analytics />
-				{children}
+				<StyledComponentsRegistry>{children}</StyledComponentsRegistry>
 			</body>
 		</html>
 	);
