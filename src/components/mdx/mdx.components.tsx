@@ -1,8 +1,13 @@
+'use client';
+
 import { PropsWithChildren } from 'react';
 
 import Link from 'next/link';
 import { RiInformationLine, RiLink } from 'react-icons/ri';
 import slug from 'slug';
+import styled from 'styled-components';
+
+import { Typography } from '@/components/Typography';
 
 import styles from './mdx.module.css';
 
@@ -14,7 +19,14 @@ export const h1 = (props: PropsWithChildren<{}>) => {
 				<RiLink size={24} />
 			</div>
 			<div className={styles.hashLinkPos} id={titleSlug} />
-			<h1 className={styles.h1}>{props.children}</h1>
+			<Typography
+				variant="h2"
+				color="accent"
+				disableMargin
+				style={{ marginTop: '4rem', marginBottom: '2rem' }}
+			>
+				{props.children}
+			</Typography>
 		</Link>
 	);
 };
@@ -27,24 +39,36 @@ export const h2 = (props: PropsWithChildren<{}>) => {
 				<RiLink size={24} />
 			</div>
 			<div className={styles.hashLinkPos} id={titleSlug} />
-			<h1 className={styles.h2}>{props.children}</h1>
+			<Typography variant="h3" color="primary">
+				{props.children}
+			</Typography>
 		</Link>
 	);
 };
 
-export const h3 = (props: PropsWithChildren<{}>) => <h3 className={styles.h3}>{props.children}</h3>;
-
-export const ul = (props: PropsWithChildren<{}>) => <ul className={styles.ul}>{props.children}</ul>;
-
-export const li = (props: PropsWithChildren<{}>) => <li className={styles.li}>{props.children}</li>;
-
-export const br = (props: PropsWithChildren<{}>) => <br className={styles.br}>{props.children}</br>;
-
-export const p = (props: PropsWithChildren<{}>) => <p className={styles.p}>{props.children}</p>;
-
-export const strong = (props: PropsWithChildren<{}>) => (
-	<strong className={styles.strong}>{props.children}</strong>
+export const h3 = (props: PropsWithChildren<{}>) => (
+	<Typography variant="h3" color="primary">
+		{props.children}
+	</Typography>
 );
+
+export const ul = styled.ul`
+	padding-left: 32px;
+	padding-top: 16px;
+	list-style: circle;
+`;
+export const li = styled.li`
+	margin-bottom: 8px;
+`;
+export const br = styled.br``;
+
+export const p = (props: PropsWithChildren) => {
+	return <Typography variant="body">{props.children}</Typography>;
+};
+
+export const strong = styled.strong`
+	color: ${(props) => props.theme.colors.text.accent};
+`;
 
 export const img = (props: PropsWithChildren<any>) => (
 	<>
@@ -70,6 +94,11 @@ export const blockquote = (props: PropsWithChildren<{}>) => {
 	);
 };
 
+const StyledA = styled.a`
+	color: ${(props) => props.theme.colors.text.accent};
+	text-decoration: underline;
+`;
+
 export const a = (props: PropsWithChildren<{}>) => (
-	<a className={styles.a} target="_blank" rel="noopener noreferrer" {...props} />
+	<StyledA target="_blank" rel="noopener noreferrer" {...props} />
 );
