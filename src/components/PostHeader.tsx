@@ -1,13 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-
-import classNames from 'classnames';
-import { TypeAnimation } from 'react-type-animation';
-
-import { sourceCodePro } from '@/app/fonts';
-
-import styles from './PostHeader.module.css';
+import styled from 'styled-components';
 
 export interface PostHeaderProps {
 	title: string;
@@ -15,40 +8,30 @@ export interface PostHeaderProps {
 }
 
 export const PostHeader = (props: PostHeaderProps) => {
-	const [isTyped, setIsTyped] = useState<boolean>(false);
-
 	return (
-		<div className={classNames(styles.container, sourceCodePro.className)}>
-			{isTyped ? (
-				<h1 className={styles.title}>
-					{props.title}
-					<span
-						style={{
-							width: '10px',
-							display: 'inline-block',
-						}}
-					/>
-				</h1>
-			) : (
-				<TypeAnimation
-					sequence={[
-						props.title,
-						() => {
-							setIsTyped(true);
-						},
-					]}
-					wrapper="h1"
-					cursor
-					className={styles.title}
-				/>
-			)}
-			<p
-				className={classNames(styles.subtitle, {
-					[styles.subtitleVisible]: isTyped,
-				})}
-			>
-				{props.description}
-			</p>
-		</div>
+		<Container>
+			<Title>{props.title}</Title>
+		</Container>
 	);
 };
+
+const Container = styled.div`
+	height: 80vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding-bottom: 100px;
+	padding-left: 32px;
+	padding-right: 32px;
+	gap: 16px;
+	background-color: ${(props) => props.theme.colors.backgroundPage};
+	font-family: ${(props) => props.theme.fonts.mono};
+`;
+
+const Title = styled.h1`
+	color: ${(props) => props.theme.colors.textPrimary};
+	font-size: 1.875rem;
+	line-height: 2.25rem;
+	text-align: center;
+`;
