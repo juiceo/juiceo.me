@@ -102,3 +102,7 @@ const StyledA = styled.a`
 export const a = (props: PropsWithChildren<{}>) => (
 	<StyledA target="_blank" rel="noopener noreferrer" {...props} />
 );
+
+export const em = styled.em`
+	opacity: 0.75;
+`;

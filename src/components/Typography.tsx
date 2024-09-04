@@ -38,29 +38,33 @@ const H1 = styled.h1`
 	font-size: 2.5rem;
 	color: ${(props) => props.theme.colors.text.primary};
 	font-weight: 500;
+	line-height: 1.2em;
 `;
 
 const H2 = styled.h2`
 	font-size: 2rem;
 	color: ${(props) => props.theme.colors.text.primary};
 	font-weight: 500;
+	line-height: 1.3em;
 `;
 
 const H3 = styled.h3`
 	font-size: 1.5rem;
 	color: ${(props) => props.theme.colors.text.primary};
 	font-weight: 500;
+	line-height: 1.5em;
 `;
 
 const Body = styled.p`
 	font-size: 1rem;
 	color: ${(props) => props.theme.colors.text.secondary};
 	font-weight: 400;
-	line-height: 1.5em;
+	line-height: 1.75em;
 `;
 
 const Caption = styled.p`
 	font-size: 0.75rem;
 	color: ${(props) => props.theme.colors.text.tertiary};
 	font-weight: 400;
+	line-height: 1.5em;
 `;

@@ -44,7 +44,7 @@ const Container = styled.main`
 `;
 
 const PublishedDate = styled.p`
-	color: ${(props) => props.theme.colors.text.secondary};
+	color: ${(props) => props.theme.colors.text.tertiary};
 	font-size: 1rem;
 	margin-bottom: 1rem;
 `;
