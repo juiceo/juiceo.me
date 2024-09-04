@@ -17,7 +17,9 @@ export const PostHeader = (props: PostHeaderProps) => {
 		<Container>
 			<Typography variant="h1">
 				{props.title.split('').map((char, index) => (
-					<AnimatedCharacter position={index}>{char}</AnimatedCharacter>
+					<AnimatedCharacter key={index} position={index}>
+						{char}
+					</AnimatedCharacter>
 				))}
 			</Typography>
 		</Container>
