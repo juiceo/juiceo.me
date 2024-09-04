@@ -31,7 +31,7 @@ export const PostBody = (props: PropsWithChildren<PostBodyProps>) => {
 const Container = styled.main`
 	transform: translateY(-150px);
 	width: 100%;
-	background: ${(props) => props.theme.colors.backgroundPage};
+	background: ${(props) => props.theme.colors.background.page};
 	padding: 32px;
 	border-radius: 8px;
 	position: relative;
@@ -44,13 +44,13 @@ const Container = styled.main`
 `;
 
 const PublishedDate = styled.p`
-	color: ${(props) => props.theme.colors.textSecondary};
+	color: ${(props) => props.theme.colors.text.secondary};
 	font-size: 1rem;
 	margin-bottom: 1rem;
 `;
 
 const Content = styled.div`
-	color: ${(props) => props.theme.colors.textBody};
+	color: ${(props) => props.theme.colors.text.secondary};
 	font-size: 1rem;
 	line-height: 1.5rem;
 `;

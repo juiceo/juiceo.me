@@ -23,16 +23,16 @@ export const PostFooter = () => {
 					{`Hi 👋 I'm Juuso, a full-stack engineer based in Helsinki, Finland with a special interest in topics related to software quality, scalability and developer productivity. I write mostly because I find it fun, but I also find it very awesome that you've read this far. Thanks for your time!`}
 				</Text>
 				<div style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
-					<Link href={'https://github.com/juiceo'} target="_blank" rel="noopener noreferrer">
+					<IconLink href={'https://github.com/juiceo'} target="_blank" rel="noopener noreferrer">
 						<RiGithubFill size={24} />
-					</Link>
-					<Link
+					</IconLink>
+					<IconLink
 						href={'https://www.linkedin.com/in/juiceo'}
 						target="_blank"
 						rel="noopener noreferrer"
 					>
 						<RiLinkedinFill size={24} />
-					</Link>
+					</IconLink>
 				</div>
 			</div>
 		</Wrapper>
@@ -61,7 +61,7 @@ const Avatar = styled.div`
 	border-radius: 50%;
 	overflow: hidden;
 	position: relative;
-	border-color: ${(props) => props.theme.colors.accent};
+	border-color: ${(props) => props.theme.colors.text.accent};
 	border-width: 4px;
 	boder-style: solid;
 
@@ -76,11 +76,15 @@ const Avatar = styled.div`
 `;
 
 const Title = styled.h4`
-	color: ${(props) => props.theme.colors.accent};
+	color: ${(props) => props.theme.colors.text.accent};
 `;
 
 const Text = styled.p`
 	font-size: 1rem;
-	color: ${(props) => props.theme.colors.textBody};
+	color: ${(props) => props.theme.colors.text.secondary};
 	margin-bottom: 2rem;
+`;
+
+const IconLink = styled(Link)`
+	color: ${(props) => props.theme.colors.text.primary};
 `;

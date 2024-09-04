@@ -63,16 +63,15 @@ const Wrapper = styled.nav`
 	height: 40px;
 	margin: 0 auto;
 	max-width: ${(props) => props.theme.layout.contentMaxWidth};
-	color: ${(props) => props.theme.colors.textSecondary};
-	font-family: ${(props) => props.theme.fonts.mono};
+	color: ${(props) => props.theme.colors.text.secondary};
 `;
 
 const NavLink = styled(Link)`
-	color: ${(props) => props.theme.colors.textSecondary};
+	color: ${(props) => props.theme.colors.text.secondary};
 	text-decoration: none;
 	transition: color 0.2s ease;
 	&:hover {
-		color: ${(props) => props.theme.colors.textPrimary};
+		color: ${(props) => props.theme.colors.text.primary};
 	}
 `;
 
@@ -90,7 +89,7 @@ const NavTitle = styled.h1`
 const Divider = styled.div`
 	height: 50%;
 	width: 2px;
-	background: ${(props) => props.theme.colors.textSecondary};
+	background: ${(props) => props.theme.colors.text.secondary};
 `;
 
 const NavBarWrapperTop = styled.div`
@@ -112,7 +111,7 @@ const NavBarWrapperScrolled = styled.div.attrs<{ $visible: boolean }>((props) =>
 	left: 0;
 	right: 0;
 	z-index: 100;
-	background: ${(props) => props.theme.colors.backgroundPageDark};
+	background: ${(props) => props.theme.colors.background.pageDark};
 	transform: ${(props) => (props.$visible ? 'translateY(0)' : 'translateY(-100px)')};
 	transition: transform 0.2s ease;
 	padding-left: 32px;

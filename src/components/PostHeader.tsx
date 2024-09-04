@@ -2,6 +2,8 @@
 
 import styled from 'styled-components';
 
+import { Typography } from '@/components/Typography';
+
 export interface PostHeaderProps {
 	title: string;
 	description: string;
@@ -10,7 +12,7 @@ export interface PostHeaderProps {
 export const PostHeader = (props: PostHeaderProps) => {
 	return (
 		<Container>
-			<Title>{props.title}</Title>
+			<Typography variant="h1">{props.title}</Typography>
 		</Container>
 	);
 };
@@ -25,13 +27,5 @@ const Container = styled.div`
 	padding-left: 32px;
 	padding-right: 32px;
 	gap: 16px;
-	background-color: ${(props) => props.theme.colors.backgroundPage};
-	font-family: ${(props) => props.theme.fonts.mono};
-`;
-
-const Title = styled.h1`
-	color: ${(props) => props.theme.colors.textPrimary};
-	font-size: 1.875rem;
-	line-height: 2.25rem;
-	text-align: center;
+	background-color: ${(props) => props.theme.colors.background.page};
 `;

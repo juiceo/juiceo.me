@@ -88,9 +88,8 @@ const Container = styled.nav`
 
 const Label = styled.h6`
 	text-transform: uppercase;
-	font-weight: 300;
 	margin-bottom: 1em;
-	color: ${(props) => props.theme.colors.textPrimary};
+	color: ${(props) => props.theme.colors.text.primary};
 	letter-spacing: 2px;
 `;
 
@@ -109,5 +108,6 @@ const TOCListItem = styled.p.attrs<{ $level: number; $active?: boolean }>((props
 	line-height: 1.25em;
 	font-size: ${(props) => (props.$level === 1 ? '0.9rem' : '0.8rem')};
 	margin-left: ${(props) => (props.$level === 2 ? '1rem' : '0')};
-	color: ${(props) => (props.$active ? '#FF8484' : props.theme.colors.textSecondary)};
+	color: ${(props) => (props.$active ? '#FF8484' : props.theme.colors.text.secondary)};
+	margin: 0;
 `;

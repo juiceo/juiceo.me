@@ -1,17 +1,21 @@
-// import original module declarations
 import 'styled-components';
 
-// and extend them!
 declare module 'styled-components' {
 	export interface DefaultTheme {
 		colors: {
-			backgroundPage: string;
-			backgroundPageDark: string;
-			textPrimary: string;
-			textSecondary: string;
-			textBody: string;
-			info: string;
-			accent: string;
+			text: {
+				primary: string;
+				secondary: string;
+				tertiary: string;
+				accent: string;
+			};
+			background: {
+				page: string;
+				pageDark: string;
+			};
+			status: {
+				info: string;
+			};
 		};
 		layout: {
 			contentMaxWidth: string;
