@@ -2,14 +2,9 @@
 
 import { useEffect, useState } from 'react';
 
-import classNames from 'classnames';
 import { throttle } from 'lodash';
 import Link from 'next/link';
-import { RiGithubFill, RiLinkedinFill } from 'react-icons/ri';
-
-import { sourceCodePro } from '@/app/fonts';
-
-import styles from './NavBar.module.css';
+import styled from 'styled-components';
 
 export const NavBar = () => {
 	const [scrollPos, setScrollPos] = useState(0);
@@ -33,52 +28,93 @@ export const NavBar = () => {
 
 	return (
 		<>
-			<div className={styles.navbarWrapperTop}>
+			<NavBarWrapperTop>
 				<NavBarInner />
-			</div>
-			<div
-				className={classNames(styles.navbarWrapperScrolled, {
-					[styles.navbarWrapperScrolledVisible]: scrollPos > windowHeight,
-				})}
-			>
+			</NavBarWrapperTop>
+			<NavBarWrapperScrolled $visible={scrollPos > windowHeight}>
 				<NavBarInner />
-			</div>
+			</NavBarWrapperScrolled>
 		</>
 	);
 };
 
 const NavBarInner = () => {
 	return (
-		<nav className={classNames(styles.navbar, sourceCodePro.className)}>
-			<div className={styles.navbarLeft}>
-				<Link href="/" className={styles.navLink}>
-					<h1>juiceo.me</h1>
-				</Link>
-			</div>
-			<div className={styles.divider} />
-			<div className={styles.navbarMid}>
-				<Link href="/posts" className={styles.navLink}>
-					All posts
-				</Link>
-			</div>
-			<div className={styles.navbarRight}>
-				{/* <Link
-					href={'https://github.com/juiceo'}
-					target="_blank"
-					rel="noopener noreferrer"
-					className={styles.navLink}
-				>
-					<RiGithubFill size={32} />
-				</Link>
-				<Link
-					href={'https://www.linkedin.com/in/juusolappalainen1/'}
-					target="_blank"
-					rel="noopener noreferrer"
-					className={styles.navLink}
-				>
-					<RiLinkedinFill size={32} />
-				</Link> */}
-			</div>
-		</nav>
+		<Wrapper>
+			<NavLink href="/">
+				<NavTitle>juiceo.me</NavTitle>
+			</NavLink>
+			<Divider />
+			<NavSection style={{ flex: 1 }}>
+				<NavLink href="/posts">All posts</NavLink>
+			</NavSection>
+			<NavSection style={{ flex: 0 }}></NavSection>
+		</Wrapper>
 	);
 };
+
+const Wrapper = styled.nav`
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	width: 100%;
+	gap: 16px;
+	height: 40px;
+	margin: 0 auto;
+	max-width: ${(props) => props.theme.layout.contentMaxWidth};
+	color: ${(props) => props.theme.colors.textSecondary};
+	font-family: ${(props) => props.theme.fonts.mono};
+`;
+
+const NavLink = styled(Link)`
+	color: ${(props) => props.theme.colors.textSecondary};
+	text-decoration: none;
+	transition: color 0.2s ease;
+	&:hover {
+		color: ${(props) => props.theme.colors.textPrimary};
+	}
+`;
+
+const NavSection = styled.div`
+	display: 'flex',
+	flexDirection: 'row',
+	alignItems: 'center',
+	gap: '16px',
+`;
+
+const NavTitle = styled.h1`
+	font-size: 1rem;
+`;
+
+const Divider = styled.div`
+	height: 50%;
+	width: 2px;
+	background: ${(props) => props.theme.colors.textSecondary};
+`;
+
+const NavBarWrapperTop = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	padding-left: 32px;
+	padding-right: 32px;
+	padding-top: 16px;
+`;
+
+const NavBarWrapperScrolled = styled.div.attrs<{ $visible: boolean }>((props) => ({
+	$visible: props.$visible,
+}))`
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	background: ${(props) => props.theme.colors.backgroundPageDark};
+	transform: ${(props) => (props.$visible ? 'translateY(0)' : 'translateY(-100px)')};
+	transition: transform 0.2s ease;
+	padding-left: 32px;
+	padding-right: 32px;
+`;
