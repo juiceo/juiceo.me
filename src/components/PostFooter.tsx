@@ -63,7 +63,7 @@ const Avatar = styled.div`
 	position: relative;
 	border-color: ${(props) => props.theme.colors.text.accent};
 	border-width: 4px;
-	boder-style: solid;
+	border-style: solid;
 
 	& img {
 		position: absolute;
@@ -77,12 +77,12 @@ const Avatar = styled.div`
 
 const Title = styled.h4`
 	color: ${(props) => props.theme.colors.text.accent};
+	margin: 0;
 `;
 
 const Text = styled.p`
 	font-size: 1rem;
 	color: ${(props) => props.theme.colors.text.secondary};
-	margin-bottom: 2rem;
 `;
 
 const IconLink = styled(Link)`
