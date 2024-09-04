@@ -3,8 +3,6 @@ import './globals.css';
 import type { Metadata } from 'next';
 
 import { poppins } from '@/app/fonts';
-import { OverscrollFillerBottom } from '@/components/OverscrollFillerBottom';
-import { PageLayout } from '@/components/PageLayout';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
