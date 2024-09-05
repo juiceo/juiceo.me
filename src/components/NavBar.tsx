@@ -59,7 +59,7 @@ const Wrapper = styled.nav`
 	justify-content: flex-start;
 	align-items: center;
 	width: 100%;
-	gap: ${(props) => props.theme.spacing(2)}
+	gap: ${(props) => props.theme.spacing(2)};
 	height: 40px;
 	margin: 0 auto;
 	max-width: ${(props) => props.theme.layout.contentMaxWidth};
