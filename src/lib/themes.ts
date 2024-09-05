@@ -26,6 +26,7 @@ export const darkTheme: DefaultTheme = {
 	layout: {
 		contentMaxWidth: '1024px',
 	},
+	spacing: (multiplier: number) => `${multiplier * 8}px`,
 	fonts: {
 		heading: `${poppins.style.fontFamily}, sans-serif`,
 		body: `${poppins.style.fontFamily}, sans-serif`,

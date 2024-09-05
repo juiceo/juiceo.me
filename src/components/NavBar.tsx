@@ -59,7 +59,7 @@ const Wrapper = styled.nav`
 	justify-content: flex-start;
 	align-items: center;
 	width: 100%;
-	gap: 16px;
+	gap: ${(props) => props.theme.spacing(2)}
 	height: 40px;
 	margin: 0 auto;
 	max-width: ${(props) => props.theme.layout.contentMaxWidth};
@@ -79,7 +79,7 @@ const NavSection = styled.div`
 	display: 'flex',
 	flexDirection: 'row',
 	alignItems: 'center',
-	gap: '16px',
+	gap: ${(props) => props.theme.spacing(2)};
 `;
 
 const NavTitle = styled.h1`
@@ -98,9 +98,9 @@ const NavBarWrapperTop = styled.div`
 	left: 0;
 	right: 0;
 	z-index: 100;
-	padding-left: 32px;
-	padding-right: 32px;
-	padding-top: 16px;
+	padding-left: ${(props) => props.theme.spacing(4)};
+	padding-right: ${(props) => props.theme.spacing(4)};
+	padding-top: ${(props) => props.theme.spacing(2)};
 `;
 
 const NavBarWrapperScrolled = styled.div.attrs<{ $visible: boolean }>((props) => ({
@@ -114,6 +114,6 @@ const NavBarWrapperScrolled = styled.div.attrs<{ $visible: boolean }>((props) =>
 	background: ${(props) => props.theme.colors.background.pageDark};
 	transform: ${(props) => (props.$visible ? 'translateY(0)' : 'translateY(-100px)')};
 	transition: transform 0.2s ease;
-	padding-left: 32px;
-	padding-right: 32px;
+	padding-left: ${(props) => props.theme.spacing(4)};
+	padding-right: ${(props) => props.theme.spacing(4)};
 `;

@@ -34,9 +34,9 @@ const Container = styled.div`
 	align-items: center;
 	justify-content: center;
 	padding-bottom: 100px;
-	padding-left: 32px;
-	padding-right: 32px;
-	gap: 16px;
+	padding-left: ${(props) => props.theme.spacing(4)};
+	padding-right: ${(props) => props.theme.spacing(4)};
+	gap: ${(props) => props.theme.spacing(2)};
 	background-color: ${(props) => props.theme.colors.background.page};
 `;
 

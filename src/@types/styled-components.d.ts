@@ -20,6 +20,7 @@ declare module 'styled-components' {
 		layout: {
 			contentMaxWidth: string;
 		};
+		spacing: (multiplier: number) => string;
 		fonts: {
 			heading: string;
 			body: string;

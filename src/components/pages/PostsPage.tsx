@@ -44,8 +44,8 @@ const Wrapper = styled.div`
 
 const Header = styled.div`
 	text-align: center;
-	padding-left: 32px;
-	padding-right: 32px;
+	padding-left: ${(props) => props.theme.spacing(4)};
+	padding-right: ${(props) => props.theme.spacing(4)};
 	max-width: ${(props) => props.theme.layout.contentMaxWidth};
 	width: 100%;
 	margin: 0 auto;
@@ -57,17 +57,16 @@ const PostsList = styled.div`
 	margin: 0 auto;
 	max-width: ${(props) => props.theme.layout.contentMaxWidth};
 	width: 100%;
-	padding-left: 16px;
-	padding-right: 16px;
+	padding-left: ${(props) => props.theme.spacing(2)};
+	padding-right: ${(props) => props.theme.spacing(2)};
 `;
 
 const PostItemWrapper = styled(Link)`
 	width: 100%;
 	background: transparent;
 	display: block;
-	padding: 16px;
-	margin-bottom: 16px;
-	border-radius: 4px;
+	padding: ${(props) => props.theme.spacing(2)};
+	margin-bottom: ${(props) => props.theme.spacing(2)};
 
 	& h2 {
 		transition: color 0.2s ease;

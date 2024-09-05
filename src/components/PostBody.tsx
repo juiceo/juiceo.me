@@ -32,14 +32,14 @@ const Container = styled.main`
 	transform: translateY(-150px);
 	width: 100%;
 	background: ${(props) => props.theme.colors.background.page};
-	padding: 32px;
+	padding: ${(props) => props.theme.spacing(4)};
 	border-radius: 8px;
 	position: relative;
 	min-width: 0;
 
 	@media screen and (max-width: 900px) {
-		padding-left: 16px;
-		padding-right: 16px;
+		padding-left: ${(props) => props.theme.spacing(2)};
+		padding-right: ${(props) => props.theme.spacing(2)};
 	}
 `;
 

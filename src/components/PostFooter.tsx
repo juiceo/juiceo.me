@@ -46,9 +46,9 @@ const Wrapper = styled.footer`
 	width: 100%;
 	max-width: ${(props) => props.theme.layout.contentMaxWidth};
 	margin: 0 auto;
-	padding-left: 16px;
-	padding-right: 16px;
-	gap: 16px;
+	padding-left: ${(props) => props.theme.spacing(2)};
+	padding-right: ${(props) => props.theme.spacing(2)};
+	gap: ${(props) => props.theme.spacing(2)};
 
 	@media screen and (max-width: 600px) {
 		flex-direction: column;

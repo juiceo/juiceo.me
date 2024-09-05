@@ -187,7 +187,7 @@ const Foreground = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 32px;
+	padding: ${(props) => props.theme.spacing(4)};
 	z-index: 5;
 	pointer-events: none;
 
