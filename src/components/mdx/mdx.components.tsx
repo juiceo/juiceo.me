@@ -71,16 +71,16 @@ export const strong = styled.strong`
 `;
 
 export const img = (props: PropsWithChildren<any>) => (
-	<>
+	<div style={{ width: '100%', marginTop: '32px', marginBottom: '32px' }}>
 		<img
 			{...props}
 			alt={props.alt}
 			className={`${styles.image} w-full rounded-lg border-gray-700 border-2`}
 		/>
-		<span className={`${styles.imageCaption} text-xs text-center mt-1 w-full block`}>
+		<Typography variant="caption" textAlign="center" disableMargin>
 			{props.alt}
-		</span>
-	</>
+		</Typography>
+	</div>
 );
 
 export const blockquote = (props: PropsWithChildren<{}>) => {
