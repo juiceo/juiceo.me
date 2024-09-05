@@ -6,6 +6,7 @@ import fm from 'front-matter';
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
 import typescript from 'highlight.js/lib/languages/typescript';
+import { sortBy } from 'lodash';
 import { compileMDX, CompileMDXResult } from 'next-mdx-remote/rsc';
 import rehypeHighlight from 'rehype-highlight';
 import slugify from 'slug';
@@ -87,7 +88,10 @@ export const getAllBlogPostPreviews = async (): Promise<BlogPostPreview[]> => {
 			};
 		});
 
-	return previews.filter((p) => !!p.publishedDate);
+	return sortBy(
+		previews.filter((p) => !!p.publishedDate),
+		(p) => p.publishedDate,
+	).reverse();
 };
 
 export const getSlugFromFilename = (fileName: string) => {

@@ -25,7 +25,7 @@ const Outer = styled.div`
 const Inner = styled.div`
 	width: 100%;
 	display: grid;
-	grid-template-columns: 1fr 240px;
+	grid-template-columns: 1fr auto;
 	grid-gap: 32px;
 	padding-top: 32px;
 

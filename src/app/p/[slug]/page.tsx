@@ -39,7 +39,7 @@ const PostPage: NextPage<PostPageProps> = async ({ params }) => {
 						<PostBody publishedDate={post.frontmatter.publishedDate}>{post.content}</PostBody>
 						<PostFooter />
 					</div>
-					<PostTOC headings={headings} />
+					{!!headings.length && <PostTOC headings={headings} />}
 				</PostLayout>
 			</div>
 		</div>

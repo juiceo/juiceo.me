@@ -80,6 +80,7 @@ const Container = styled.nav`
 	top: 100px;
 	align-self: start;
 	min-width: 0;
+	width: 240px;
 
 	@media screen and (max-width: 900px) {
 		display: none;
