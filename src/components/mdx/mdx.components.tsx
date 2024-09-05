@@ -83,14 +83,40 @@ export const img = (props: PropsWithChildren<any>) => (
 	</div>
 );
 
+const BlockQuote = styled.aside`
+	margin-top: 2em;
+	position: relative;
+	background: ${(props) => props.theme.colors.background.pageDark};
+	border-color: ${(props) => props.theme.colors.status.info};
+	border-left-width: 3px;
+	border-left-style: solid;
+	padding: 16px;
+	padding-left: 32px;
+`;
+
+const BlockQuoteIcon = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transform: translate3d(-50%, -50%, 0);
+	background: ${(props) => props.theme.colors.background.page};
+	color: ${(props) => props.theme.colors.status.info};
+`;
+
 export const blockquote = (props: PropsWithChildren<{}>) => {
 	return (
-		<aside className={styles.blockQuote}>
+		<BlockQuote>
 			{props.children}
-			<div className={styles.blockQuoteIcon}>
+			<BlockQuoteIcon>
 				<RiInformationLine size={36} />
-			</div>
-		</aside>
+			</BlockQuoteIcon>
+		</BlockQuote>
 	);
 };
 
