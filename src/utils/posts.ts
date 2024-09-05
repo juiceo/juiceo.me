@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 
-import * as MDXComponents from '@/components/mdx/mdx.components';
 import { extractHeadings, Heading } from 'extract-md-headings';
 import fm from 'front-matter';
 import hljs from 'highlight.js/lib/core';
@@ -10,6 +9,8 @@ import typescript from 'highlight.js/lib/languages/typescript';
 import { compileMDX, CompileMDXResult } from 'next-mdx-remote/rsc';
 import rehypeHighlight from 'rehype-highlight';
 import slugify from 'slug';
+
+import * as MDXComponents from '@/components/mdx/mdx.components';
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('typescript', typescript);
@@ -70,19 +71,21 @@ export const getAllBlogPostPreviews = async (): Promise<BlogPostPreview[]> => {
 
 	const fileNames = fs.readdirSync(postsDirPath);
 
-	const previews = fileNames.map((fileName) => {
-		const file = fs.readFileSync(path.join(postsDirPath, fileName), 'utf8');
-		const frontMatter = fm<{
-			title: string;
-			description: string;
-			publishedDate: string;
-		}>(file);
+	const previews = fileNames
+		.filter((fileName) => fileName.includes('.mdx'))
+		.map((fileName) => {
+			const file = fs.readFileSync(path.join(postsDirPath, fileName), 'utf8');
+			const frontMatter = fm<{
+				title: string;
+				description: string;
+				publishedDate: string;
+			}>(file);
 
-		return {
-			slug: getSlugFromFilename(fileName),
-			...frontMatter.attributes,
-		};
-	});
+			return {
+				slug: getSlugFromFilename(fileName),
+				...frontMatter.attributes,
+			};
+		});
 
 	return previews.filter((p) => !!p.publishedDate);
 };

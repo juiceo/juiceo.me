@@ -13,12 +13,13 @@ export interface PostHeaderProps {
 }
 
 export const PostHeader = (props: PostHeaderProps) => {
+	const words = props.title.split(' ');
 	return (
 		<Container>
-			<Typography variant="h1">
-				{props.title.split('').map((char, index) => (
+			<Typography variant="h1" textAlign="center">
+				{words.map((word, index) => (
 					<AnimatedCharacter key={index} position={index}>
-						{char}
+						{word}{' '}
 					</AnimatedCharacter>
 				))}
 			</Typography>
