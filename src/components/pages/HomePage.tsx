@@ -225,7 +225,7 @@ const BackgroundGridWrapper = styled.div`
 `;
 
 const BackgroundGridItem = styled.div`
-	background: #2f2d2e;
+	background: rgba(37, 43, 61, 0.6);
 	display: flex;
 	flex-direction: column;
 	align-items: center;

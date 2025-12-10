@@ -15,13 +15,14 @@ import { PostTOC } from '@/components/PostTOC';
 import { getAllBlogPostPreviews, getCompiledBlogPost } from '@/utils/posts';
 
 export type PostPageProps = {
-	params: {
+	params: Promise<{
 		slug: string;
-	};
+	}>;
 };
 
 const PostPage: NextPage<PostPageProps> = async ({ params }) => {
-	const { post, headings } = await getBlogPost(params.slug);
+	const { slug } = await params;
+	const { post, headings } = await getBlogPost(slug);
 
 	return (
 		<div>
@@ -57,7 +58,7 @@ export const generateMetadata = async (
 	{ params }: PostPageProps,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> => {
-	const { slug } = params;
+	const { slug } = await params;
 	const { post } = await getCompiledBlogPost(slug);
 
 	return {

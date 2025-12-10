@@ -10,14 +10,14 @@ export const sourceCodePro = Source_Code_Pro({
 export const darkTheme: DefaultTheme = {
 	colors: {
 		background: {
-			page: '#1B2021',
-			pageDark: 'hsl(210, 30%, 8%)',
+			page: '#1a1f2e',
+			pageDark: 'hsl(222, 28%, 10%)',
 		},
 		text: {
-			primary: 'hsl(0, 10%, 100%)',
-			secondary: 'hsl(213, 26.8%, 83.9%)',
-			tertiary: 'hsl(218, 10.6%, 64.9%)',
-			accent: 'hsl(0, 100%, 76%)',
+			primary: 'hsl(0, 0%, 98%)',
+			secondary: 'hsl(215, 20%, 80%)',
+			tertiary: 'hsl(215, 15%, 75%)',
+			accent: 'hsl(351, 100%, 72%)',
 		},
 		status: {
 			info: 'hsl(230, 100%, 69%)',

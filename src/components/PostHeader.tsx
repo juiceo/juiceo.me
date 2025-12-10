@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type PropsWithChildren } from 'react';
+import { useEffect, useState, type PropsWithChildren } from 'react';
 
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
@@ -41,20 +41,30 @@ const Container = styled.div`
 `;
 
 const AnimatedCharacter = (props: PropsWithChildren<{ position: number }>) => {
+	const [isClient, setIsClient] = useState(false);
 	const [startPos] = useState<number>(() => {
 		const random = Math.floor(Math.random() * 100);
 		return -50 + random;
 	});
+
+	useEffect(() => {
+		setIsClient(true);
+	}, []);
+
 	return (
 		<motion.span
 			style={{
 				display: 'inline-block',
 				whiteSpace: 'pre',
 			}}
-			initial={{
-				opacity: 0,
-				y: startPos,
-			}}
+			initial={
+				isClient
+					? {
+							opacity: 0,
+							y: startPos,
+						}
+					: false
+			}
 			animate={{
 				opacity: 1,
 				y: 0,

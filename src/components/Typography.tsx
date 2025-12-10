@@ -8,6 +8,7 @@ export type TypographyProps = {
 	textAlign?: 'left' | 'center' | 'right';
 	disableMargin?: boolean;
 	style?: React.CSSProperties;
+	suppressHydrationWarning?: boolean;
 };
 
 export const Typography = (props: PropsWithChildren<TypographyProps>) => {
@@ -62,7 +63,7 @@ const Body = styled.p`
 	line-height: 1.75em;
 `;
 
-const Caption = styled.p`
+const Caption = styled.span`
 	font-size: 0.75rem;
 	color: ${(props) => props.theme.colors.text.tertiary};
 	font-weight: 400;

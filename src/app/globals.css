@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --color-page-bg: #1B2021;
+  --color-page-bg: #1a1f2e;
 
 
-  --color-page-bg-hsl: 210deg, 38%, 15%;
-  --color-page-bg-dark-hsl: 210deg, 30%, 8%;
+  --color-page-bg-hsl: 222deg, 25%, 14%;
+  --color-page-bg-dark-hsl: 222deg, 28%, 10%;
   --color-info-hsl: 230deg, 100%, 69%;
   --color-footer-hsl: 300, 21%, 5%;
-  --color-accent-hsl: 0, 100%, 76%;
+  --color-accent-hsl: 351, 100%, 72%;
 
-  --color-text-primary-hsl: 0deg, 10%, 100%;
-  --color-text-secondary-hsl: 218deg, 10.6%, 64.9%;
-  --color-text-body-hsl: 213deg, 26.8%, 83.9%;
+  --color-text-primary-hsl: 0deg, 0%, 98%;
+  --color-text-secondary-hsl: 215deg, 15%, 75%;
+  --color-text-body-hsl: 215deg, 20%, 80%;
 
   --content-max-w: 1024px;
 }
@@ -25,14 +25,14 @@
 
 html {
   height: 100%;
-  background: var(--color-page-bg);
+  background: linear-gradient(135deg, #1a1f2e 0%, #252b3d 50%, #1a1f2e 100%);
   background-attachment: fixed;
   position: relative;
 }
 
 body {
   color: hsl(var(--color-text-primary-hsl));
-  background: var(--color-page-bg);
+  background: transparent;
   font-family: "Poppins", sans-serif;
   height: 100%;
   font-weight: 300;
@@ -40,7 +40,7 @@ body {
 
 p {
   font-size: 1.4rem;
-  line-height: 1.4em;
+  line-height: 1.7em;
 }
 
 h1 {

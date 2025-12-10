@@ -70,8 +70,15 @@ export const strong = styled.strong`
 	color: ${(props) => props.theme.colors.text.accent};
 `;
 
+const ImageWrapper = styled.span`
+	display: block;
+	width: 100%;
+	margin-top: 32px;
+	margin-bottom: 32px;
+`;
+
 export const img = (props: PropsWithChildren<any>) => (
-	<div style={{ width: '100%', marginTop: '32px', marginBottom: '32px' }}>
+	<ImageWrapper>
 		<img
 			{...props}
 			alt={props.alt}
@@ -80,7 +87,7 @@ export const img = (props: PropsWithChildren<any>) => (
 		<Typography variant="caption" textAlign="center" disableMargin>
 			{props.alt}
 		</Typography>
-	</div>
+	</ImageWrapper>
 );
 
 const BlockQuote = styled.aside`
@@ -130,5 +137,7 @@ export const a = (props: PropsWithChildren<{}>) => (
 );
 
 export const em = styled.em`
-	opacity: 0.75;
+	color: ${(props) => props.theme.colors.text.tertiary};
+	font-style: normal;
+	font-weight: 400;
 `;
