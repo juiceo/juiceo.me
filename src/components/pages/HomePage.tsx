@@ -138,7 +138,7 @@ const GitHubItem = () => {
 
 const LinkedInItem = () => {
 	return (
-		<TooltipItem label="LinkedIn" href="https://linkedin.com/in/juusolappalainen1">
+		<TooltipItem label="LinkedIn" href="https://linkedin.com/in/juiceo">
 			<RiLinkedinFill size={20} />
 		</TooltipItem>
 	);
